@@ -1,5 +1,5 @@
 <template>
-  <div class="firstPage" @click="jumpTest" ref="test">
+  <div class="firstPage" @click="jumpTest" ref="test" v-longTouch="longTouch">
     {{ msg }}
   </div>
 </template>

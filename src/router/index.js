@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import routeConfig from './routeConfig'
+import Vue from 'vue';
+import Router from 'vue-router';
+import routeConfig from './routeConfig';
 
-Vue.use(Router)
+Vue.use(Router);
 
-const routes = routeConfig
+const routes = routeConfig;
 
 let router = new Router({
   routes: routes
-})
+});
 
-export default router
+export default router;

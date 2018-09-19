@@ -13,5 +13,5 @@ config.map(route => {
   routeTemplate.push(render(COMPONENTS_TEMPLATE, {path: path, name: name, filePath: filePath}));
 });
 
-const MAIN_TEMPLATE = `const config = [${routeTemplate.join(', ')}]\nexport default config\n`;
+const MAIN_TEMPLATE = `const config = [\n${routeTemplate.join(',\n')}];\nexport default config;\n`;
 fs.writeFileSync(path.join(__dirname, '../src/router/routeConfig.js'),render(MAIN_TEMPLATE));

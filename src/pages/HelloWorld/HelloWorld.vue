@@ -5,28 +5,27 @@
 </template>
 
 <script>
-export default {
-  name: 'firstPage',
-  data () {
-    return {
-      msg: 'firstPage'
-    }
-  },
-  mounted () {
-  },
-  methods: {
-    jumpTest () {
-      this.$router.push({'path': '/test1'})
+  export default {
+    name: 'firstPage',
+    data () {
+      return {
+        msg: 'firstPage'
+      };
     },
-    longTouch () {
-      console.log('长按')
-    }
-  },
-  components: {
-  }
-}
+    mounted () {
+    },
+    methods: {
+      jumpTest () {
+        this.$router.push({'path': '/test1'});
+      },
+      longTouch () {
+        console.log('长按');
+      }
+    },
+    components: {}
+  };
 </script>
 <style scoped>
-  .firstPage{
+  .firstPage {
   }
 </style>

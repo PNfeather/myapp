@@ -10,14 +10,14 @@ export default {
   data () {
     return {
       msg: 'test1Page'
-    }
+    };
   },
   methods: {
     jumpHome () {
-      this.$router.push({'path': '/'})
+      this.$router.push({'path': '/'});
     }
   }
-}
+};
 </script>
 <style scoped>
 </style>

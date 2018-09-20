@@ -1,5 +1,5 @@
 const config = [
-  {path: '/', name: 'HelloWorld', filePath: '/HelloWorld'},
+  {path: '/', name: 'index', filePath: '/index'},
   {path: '/test1', name: 'test1', filePath: '/test1'}
 ];
 

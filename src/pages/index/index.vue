@@ -27,5 +27,6 @@
 </script>
 <style scoped>
   .firstPage {
+    font-size: 2rem;
   }
 </style>

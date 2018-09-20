@@ -3,9 +3,29 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import FastClick from 'fastclick';
 import '@/plugins/longTouch/longTouch';
 
 Vue.config.productionTip = false;
+
+if ('addEventListener' in document) {
+  // fastclick设置
+  document.addEventListener('DOMContentLoaded', function () {
+    FastClick.attach(document.body);
+  }, false);
+  // 响应字体设置
+  let html = document.documentElement;
+  let resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+  let reSize = function () {
+    let clientWidth = html.clientWidth;
+    if (!clientWidth) {
+      return;
+    }
+    html.style.fontSize = 20 * (clientWidth / 375) + 'px';
+  };
+  window.addEventListener(resizeEvent, reSize, false);
+  document.addEventListener('DOMContentLoaded', reSize, false);
+}
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,6 +1,6 @@
 <template>
   <div class="firstPage" @click="jumpTest" ref="test" v-longTouch="longTouch">
-    {{ msg }}
+    <p>{{ msg }}</p>
   </div>
 </template>
 
@@ -25,8 +25,10 @@
     components: {}
   };
 </script>
-<style scoped>
+<style scoped lang="less">
   .firstPage {
-    font-size: 2rem;
+    p{
+      font-size: 2rem;
+    }
   }
 </style>

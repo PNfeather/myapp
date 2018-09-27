@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  name: 'test1',
+  name: 'unfind',
   data () {
     return {
-      msg: 'test1Page'
+      msg: '迷失页'
     };
   },
   methods: {
     jumpHome () {
-      this.$router.push({'path': '/test2'});
+      this.$router.push({'path': '/'});
     }
   }
 };

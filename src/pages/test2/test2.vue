@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  name: 'test1',
+  name: 'test2',
   data () {
     return {
-      msg: 'test1Page'
+      msg: 'test2Page'
     };
   },
   methods: {
     jumpHome () {
-      this.$router.push({'path': '/test2'});
+      this.$router.push({'path': '/test3'});
     }
   }
 };

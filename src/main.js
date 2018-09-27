@@ -4,7 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import FastClick from 'fastclick';
-import '@/plugins/longTouch/longTouch';
+import '@/plugins/longTouch';
 
 Vue.config.productionTip = false;
 

@@ -1,16 +1,33 @@
 <template>
-  <div class="firstPage" @click="jumpHome">
-    {{ msg }}
+  <div>
+    <tabs v-model="activeKey">
+      <pane label="标签1" name="1">
+        标签一的内容
+      </pane>
+      <pane label="标签2" name="2">
+        标签二的内容
+      </pane>
+      <pane label="标签3" name="3">
+        标签三的内容
+        <span @click="jumpHome">去test2</span>
+      </pane>
+    </tabs>
   </div>
 </template>
 
 <script>
+import tabs from '@/components/tabs/tabs.vue';
+import pane from '@/components/tabs/pane.vue';
 export default {
   name: 'test1',
   data () {
     return {
-      msg: 'test1Page'
+      activeKey: '1'
     };
+  },
+  components: {
+    tabs,
+    pane
   },
   methods: {
     jumpHome () {

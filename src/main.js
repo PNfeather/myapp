@@ -4,9 +4,12 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import FastClick from 'fastclick';
+import http from '@/plugins/http';
 import '@/plugins/longTouch';
 
 Vue.config.productionTip = false;
+
+Vue.use(http.install);
 
 if ('addEventListener' in document) {
   // fastclick设置

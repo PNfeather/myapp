@@ -1,5 +1,6 @@
 <template>
   <div class="firstPage" @click="jumpHome">
+    <mt-header :title="`你好`"></mt-header>
     {{ msg }}
   </div>
 </template>

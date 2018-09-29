@@ -6,6 +6,7 @@ import router from './router';
 import FastClick from 'fastclick';
 import http from '@/plugins/http';
 import '@/plugins/longTouch';
+import '@/plugins/clickOutside';
 import {
   Header, Button, Popup, Swipe, SwipeItem, Tabbar, TabItem, MessageBox, Toast, InfiniteScroll, Spinner, Loadmore, Picker, Indicator, DatetimePicker, TabContainer, TabContainerItem, CellSwipe, Switch, Lazyload
 } from 'mint-ui';

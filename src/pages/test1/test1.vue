@@ -3,6 +3,8 @@
     <tabs v-model="activeKey">
       <pane label="标签1" name="1">
         标签一的内容
+        <span @click.stop="openShowMore">这是:</span>
+        <div v-show="showMore" v-clickOutside="hideShowMore">隐藏内容</div>
       </pane>
       <pane label="标签2" name="2">
         标签二的内容
@@ -22,8 +24,11 @@ export default {
   name: 'test1',
   data () {
     return {
-      activeKey: '1'
+      activeKey: '1',
+      showMore: false
     };
+  },
+  created () {
   },
   components: {
     tabs,
@@ -32,6 +37,12 @@ export default {
   methods: {
     jumpHome () {
       this.$router.push({'path': '/test2'});
+    },
+    openShowMore () {
+      this.showMore = !this.showMore;
+    },
+    hideShowMore () {
+      this.showMore = false;
     }
   }
 };

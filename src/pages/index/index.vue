@@ -2,6 +2,7 @@
   <main class="content">
     <div class="firstPage" @click="jumpTest" ref="test" v-longTouch="longTouch">
       <p>{{ msg }}</p>
+      <p v-show="show" v-clickOutside="hideSelf">一个隐藏内容</p>
     </div>
   </main>
 </template>
@@ -11,7 +12,8 @@
     name: 'firstPage',
     data () {
       return {
-        msg: 'firstPage'
+        msg: 'firstPage',
+        show: false
       };
     },
     mounted () {
@@ -21,7 +23,10 @@
         this.$router.push({'path': '/test1'});
       },
       longTouch () {
-        console.log('长按');
+        this.show = true;
+      },
+      hideSelf () {
+        this.show = false;
       }
     },
     components: {}

@@ -66,6 +66,8 @@ if ('addEventListener' in document) {
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  render (createElement) {
+    return createElement('App');
+  },
+  components: { App }
 });

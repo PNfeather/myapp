@@ -8,6 +8,8 @@
       </pane>
       <pane label="标签2" name="2">
         标签二的内容
+        <p v-time="timeNow"></p>
+        <p v-time="timeBefore"></p>
       </pane>
       <pane label="标签3" name="3">
         标签三的内容
@@ -20,13 +22,30 @@
 <script>
 import tabs from '@/components/tabs/tabs.vue';
 import pane from '@/components/tabs/pane.vue';
+import commonTime from '@/tools/common';
 export default {
   name: 'test1',
   data () {
     return {
       activeKey: '1',
-      showMore: false
+      showMore: false,
+      timeNow: new Date().getTime(),
+      timeBefore: 1538215500925
     };
+  },
+  directives: {
+    time: {
+      bind: function (el, binding) {
+        el.innerHTML = commonTime.getFormatTime(binding.value);
+        el.__timeout__ = setInterval(() => {
+          el.innerHTML = commonTime.getFormatTime(binding.value);
+        }, 60000);
+      },
+      unbind: function (el) {
+        clearInterval(el.__timeout__);
+        delete el.__timeout__;
+      }
+    }
   },
   created () {
   },

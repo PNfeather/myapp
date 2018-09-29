@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-Vue.directive('clickOutside', { // 点击元素之外事件(显隐控制需个触发显示元素的点击事件添加stop修饰)
+Vue.directive('clickOutside', { // 点击元素之外事件(显隐控制需给触发显示元素的点击事件添加stop修饰)
   bind: function (el, binding) {
     function documentHandler (e) {
       if (el.contains(e.target)) { // 指令添加元素包含点击目标元素

@@ -90,8 +90,8 @@ export default {
     .tabs-bar{
       .tabs-tab{
         display: inline-block;
-        padding: 4px 16px;
-        margin-right: 6px;
+        padding: .2rem .8rem;
+        margin-right: .3rem;
         background: #fff;
         border: 1px solid #d7dde4;
         cursor: pointer;

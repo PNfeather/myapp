@@ -46,7 +46,7 @@ let commonTime = {
     } else if (secondTime >= 3600 && (timestamp - today >= 0)) {
       tips = Math.floor(secondTime / 3600) + '小时前';
     } else if (secondTime / 86400 <= 31) {
-      tips = Math.floor(secondTime / 86400) + '天前';
+      tips = Math.ceil(secondTime / 86400) + '天前';
     } else {
       tips = this.getLastDate(timestamp);
     }

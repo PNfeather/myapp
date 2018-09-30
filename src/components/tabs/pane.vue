@@ -22,19 +22,19 @@ export default {
     };
   },
   methods: {
-    updataNav () {
+    updateNav () {
       this.$parent.updateNav();
     }
   },
   watch: {
     label () {
-      this.updataNav();
+      this.updateNav();
     }
   },
   components: {},
   created () {},
   mounted () {
-    this.updataNav();
+    this.updateNav();
   }
 };
 </script>

@@ -40,5 +40,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .pane{
+    padding-top: .3rem;
+  }
 </style>

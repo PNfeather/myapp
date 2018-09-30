@@ -1,7 +1,9 @@
 <template>
   <div class="tabs">
-    <div class="tabs-bar">
-      <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)" :key="`tabs-bar${index}`">{{item.label}}</div>
+    <div class="assistDiv">
+      <div class="tabs-bar" ref="scrollNav">
+        <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)" :key="`tabs-bar${index}`">{{item.label}}</div>
+      </div>
     </div>
     <div class="tabs-content">
       <slot></slot>
@@ -10,17 +12,23 @@
 </template>
 
 <script>
+import _ from '@/plugins/lodash';
 export default {
   name: 'tabs',
   props: {
     value: {
       type: [String, Number]
+    },
+    changeType: {
+      type: String,
+      default: 'click'
     }
   },
   data () {
     return {
       currentValue: this.value,
-      navList: []
+      navList: [],
+      navElTop: 0
     };
   },
   methods: {
@@ -39,34 +47,83 @@ export default {
     },
     updateNav () {
       this.navList = [];
-      let _this = this;
-      this.getTabs().forEach((pane, index) => {
-        _this.navList.push({
+      _.forEach(this.getTabs(), (pane, index) => {
+        this.navList.push({
           label: pane.label,
           name: pane.name || index
         });
         if (!pane.name) pane.name = index;
         if (index === 0) {
-          if (!_this.currentValue) {
-            _this.currentValue = pane.name || index;
+          if (!this.currentValue) {
+            this.currentValue = pane.name || index;
           }
         }
       });
+      if (this.changeType === 'scroll') {
+        this.calculateScrollData();
+      }
       this.updateStatus();
     },
     updateStatus () {
       let tabs = this.getTabs();
       let _this = this;
-      tabs.forEach((tab) => {
-        return (tab.show = tab.name === _this.currentValue);
-      });
+      if (this.changeType === 'click') {
+        tabs.forEach((tab) => {
+          return (tab.show = tab.name === _this.currentValue);
+        });
+      }
     },
     handleChange (index) {
       let nav = this.navList[index];
       let name = nav.name;
       this.currentValue = name;
+      if (this.changeType === 'scroll') {
+        let scrollElement = document.getElementById('scrollTabsElement');
+        scrollElement.scrollTop = nav.scrollLimitMin;
+      }
       this.$emit('input', name);
       this.$emit('on-click', name);
+    },
+    calculateScrollData () {
+      this.$nextTick(() => {
+        let scrollElement = document.getElementById('scrollTabsElement');
+        let scrollElHeight = parseInt(scrollElement.offsetHeight);
+        let navElement = this.$refs.scrollNav;
+        let navElHeight = parseInt(navElement.offsetHeight);
+        this.navElTop = parseInt(navElement.offsetTop);
+        let panes = this.getTabs();
+        _.forEach(panes, (item, index) => {
+          let el = item.$el;
+          this.navList[index].scrollLimitMin = el.offsetTop - navElHeight;
+          this.navList[index].scrollLimitMax = el.offsetTop + el.offsetHeight - navElHeight;
+        });
+        let lastPane = panes[panes.length - 1].$el;
+        let lastPaneTop = parseInt(lastPane.offsetHeight);
+        if (lastPaneTop < scrollElHeight) {
+          lastPane.style.marginBottom = scrollElHeight - lastPaneTop + 'px';
+        }
+      });
+    },
+    setScrollWatch () {
+      let _this = this;
+      let scrollElement = document.getElementById('scrollTabsElement');
+      let navElement = this.$refs.scrollNav;
+      scrollElement.addEventListener('scroll', () => {
+        let scrollTop = Math.ceil(scrollElement.scrollTop);
+        if (this.navElTop > scrollTop) {
+          navElement.style.position = 'static';
+        } else {
+          navElement.style.position = 'fixed';
+          navElement.style.top = '2.25rem';
+          navElement.style.left = '0';
+          navElement.style.right = '0';
+        }
+        _.forEach(_this.navList, (item) => {
+          if (scrollTop >= item.scrollLimitMin && scrollTop <= item.scrollLimitMax) {
+            this.currentValue = item.name;
+          }
+        });
+      });
     }
   },
   watch: {
@@ -79,7 +136,11 @@ export default {
   },
   components: {},
   created () {},
-  mounted () {}
+  mounted () {
+    this.$nextTick(() => {
+      this.setScrollWatch();
+    });
+  }
 };
 </script>
 
@@ -87,38 +148,45 @@ export default {
   .tabs{
     font-size: .7rem;
     color: #657180;
-    .tabs-bar{
-      .tabs-tab{
-        display: inline-block;
-        padding: .2rem .8rem;
-        margin-right: .3rem;
-        background: #fff;
-        border: 1px solid #d7dde4;
-        cursor: pointer;
-        position: relative;
-      }
-      .tabs-tab-active{
-        color: #3399ff;
-        border-top:1px solid #3399ff;
-        border-bottom:1px solid #fff;
-        &:before{
+    .assistDiv{
+      height: 2rem;
+      .tabs-bar{
+        height: 2rem;
+        padding: .2rem 0;
+        background: #f1f1f1;
+        .tabs-tab{
+          height: 1.6rem;
+          display: inline-block;
+          padding: .2rem .8rem;
+          margin-right: .3rem;
+          background: #fff;
+          border: 1px solid #d7dde4;
+          cursor: pointer;
+          position: relative;
+        }
+        .tabs-tab-active{
+          color: #3399ff;
+          border-top:1px solid #3399ff;
+          border-bottom:1px solid #fff;
+          &:before{
+            content: '';
+            display: block;
+            height: 1px;
+            background: #3399ff;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+          }
+        }
+        &:after{
           content: '';
           display: block;
+          width: 100%;
           height: 1px;
-          background: #3399ff;
-          position: absolute;
-          top: 0;
-          right: 0;
-          left: 0;
+          background: #d7dde4;
+          margin-top: -1px;
         }
-      }
-      &:after{
-        content: '';
-        display: block;
-        width: 100%;
-        height: 1px;
-        background: #d7dde4;
-        margin-top: -1px;
       }
     }
     .tabs-content{

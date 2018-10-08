@@ -54,7 +54,7 @@ let commonTime = {
   }
 };
 
-let addFunToOldFun = function (oldFun, addFun) {
+let addFunToOldFun = function (oldFun, addFun) { // 给方法添加方法
   let fun = oldFun;
   if ((typeof oldFun) === 'function') {
     return () => {
@@ -66,6 +66,14 @@ let addFunToOldFun = function (oldFun, addFun) {
   }
 };
 
-export default {commonTime, addFunToOldFun};
+let getCss = function (obj, attribute) { // 获取元素css属性
+  if (obj.currentStyle) {
+    return obj.currentStyle[attribute];
+  } else {
+    return window.getComputedStyle(obj, null)[attribute];
+  }
+};
 
-export {commonTime, addFunToOldFun};
+export default {commonTime, addFunToOldFun, getCss};
+
+export {commonTime, addFunToOldFun, getCss};

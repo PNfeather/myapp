@@ -29,9 +29,7 @@ export default {
       currentValue: this.value,
       navList: [],
       navElTop: 0,
-      scrollTimer: 0,
-      clientHeight: document.body.clientHeight,
-      heightChangeToggle: false
+      scrollTimer: 0
     };
   },
   methods: {
@@ -147,16 +145,6 @@ export default {
     },
     currentValue () {
       this.updateStatus();
-    },
-    clientHeight () {
-      if (!this.heightChangeToggle) {
-        let that = this;
-        this.calculateScrollData();
-        this.heightChangeToggle = true;
-        setTimeout(() => {
-          that.heightChangeToggle = false;
-        }, 400);
-      }
     }
   },
   components: {},
@@ -167,13 +155,6 @@ export default {
         this.setScrollWatch();
       });
     }
-    const that = this;
-    window.onresize = () => {
-      return (() => {
-        window.screenHeight = document.body.clientHeight;
-        that.clientHeight = window.screenHeight;
-      })();
-    };
   }
 };
 </script>

@@ -22,7 +22,7 @@
 <script>
 import tabs from '@/components/tabs/tabs.vue';
 import pane from '@/components/tabs/pane.vue';
-import commonTime from '@/tools/common';
+import {commonTime} from '@/tools/common';
 export default {
   name: 'test1',
   data () {

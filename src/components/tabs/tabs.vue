@@ -1,7 +1,7 @@
 <template>
   <div class="tabs">
     <div class="assistDiv">
-      <div class="tabs-bar" ref="scrollNav">
+      <div class="tabs-bar">
         <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)" :key="`tabs-bar${index}`">{{item.label}}</div>
       </div>
     </div>
@@ -101,7 +101,7 @@ export default {
       this.$nextTick(() => {
         let scrollElement = document.getElementById('scrollTabsElement');
         let scrollElHeight = parseInt(scrollElement.offsetHeight);
-        let navElement = this.$refs.scrollNav;
+        let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
         let navElHeight = parseInt(navElement.offsetHeight);
         this.navElTop = parseInt(navElement.offsetTop);
         let panes = this.getTabs();
@@ -120,7 +120,7 @@ export default {
     setScrollWatch () {
       let _this = this;
       let scrollElement = document.getElementById('scrollTabsElement');
-      let navElement = this.$refs.scrollNav;
+      let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
       scrollElement.addEventListener('scroll', () => {
         let scrollTop = Math.ceil(scrollElement.scrollTop);
         if (this.navElTop > scrollTop) {

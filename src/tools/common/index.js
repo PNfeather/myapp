@@ -54,4 +54,18 @@ let commonTime = {
   }
 };
 
-export default commonTime;
+let addFunToOldFun = function (oldFun, addFun) {
+  let fun = oldFun;
+  if ((typeof oldFun) === 'function') {
+    return () => {
+      fun();
+      addFun();
+    };
+  } else {
+    return addFun;
+  }
+};
+
+export default {commonTime, addFunToOldFun};
+
+export {commonTime, addFunToOldFun};

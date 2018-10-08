@@ -2,10 +2,10 @@
   <div class="page">
     <mt-header class="header" :title="`页面3`"></mt-header>
     <div class="content" id="scrollTabsElement">
-      <div class="big">前置内容</div>
+      <div class="big" @click="changeHeight">前置内容</div>
       <tabs v-model="activeKey" :changeType="`scroll`">
         <pane label="入门" name="1">
-          <div class="big">内容1</div>
+          <div class="big" ref="content1">内容1</div>
         </pane>
         <pane label="日常" name="2">
           <div class="big">内容2</div>
@@ -41,6 +41,9 @@ export default {
   methods: {
     jumpHome () {
       this.$router.push({'path': '/'});
+    },
+    changeHeight () {
+      this.$refs.content1.style.height = 300 + 'px';
     }
   }
 };

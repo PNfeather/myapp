@@ -28,7 +28,8 @@ export default {
     return {
       currentValue: this.value,
       navList: [],
-      navElTop: 0
+      navElTop: 0,
+      scrollTimer: 0
     };
   },
   methods: {
@@ -76,13 +77,25 @@ export default {
     handleChange (index) {
       let nav = this.navList[index];
       let name = nav.name;
-      this.currentValue = name;
+      if (this.changeType === 'click') {
+        this.currentValue = name;
+        this.$emit('input', name);
+        this.$emit('on-click', name);
+      }
       if (this.changeType === 'scroll') {
         let scrollElement = document.getElementById('scrollTabsElement');
-        scrollElement.scrollTop = nav.scrollLimitMin;
+        if (this.scrollTimer) clearInterval(this.scrollTimer);
+        this.scrollTimer = setInterval(() => {
+          if (Math.abs(scrollElement.scrollTop - nav.scrollLimitMin) < 10) {
+            scrollElement.scrollTop = nav.scrollLimitMin;
+            this.currentValue = name;
+            clearInterval(this.scrollTimer);
+            return false;
+          } else {
+            scrollElement.scrollTop -= (scrollElement.scrollTop - nav.scrollLimitMin) / 10;
+          }
+        }, 20);
       }
-      this.$emit('input', name);
-      this.$emit('on-click', name);
     },
     calculateScrollData () {
       this.$nextTick(() => {
@@ -94,7 +107,7 @@ export default {
         let panes = this.getTabs();
         _.forEach(panes, (item, index) => {
           let el = item.$el;
-          this.navList[index].scrollLimitMin = el.offsetTop - navElHeight;
+          this.navList[index].scrollLimitMin = Math.ceil(el.offsetTop - navElHeight);
           this.navList[index].scrollLimitMax = el.offsetTop + el.offsetHeight - navElHeight;
         });
         let lastPane = panes[panes.length - 1].$el;

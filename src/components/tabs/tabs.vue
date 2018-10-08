@@ -66,10 +66,11 @@ export default {
       this.updateStatus();
     },
     updateStatus () {
-      let panes = this.getTabs();
+      let tabs = this.getTabs();
+      let _this = this;
       if (this.changeType === 'click') {
-        _.forEach(panes, (pane) => {
-          return (pane.show = pane.name === this.currentValue);
+        tabs.forEach((tab) => {
+          return (tab.show = tab.name === _this.currentValue);
         });
       }
     },

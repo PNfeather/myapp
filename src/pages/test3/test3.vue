@@ -44,7 +44,6 @@ export default {
     },
     changeHeight () {
       this.$refs.content1.style.height = 300 + 'px';
-      this.$refs.tabsElement.updateNav();
     }
   }
 };

@@ -29,7 +29,8 @@ export default {
       currentValue: this.value,
       navList: [],
       navElTop: 0,
-      scrollTimer: 0
+      scrollTimer: 0,
+      clientHeight: document.body.clientHeight
     };
   },
   methods: {
@@ -145,6 +146,9 @@ export default {
     },
     currentValue () {
       this.updateStatus();
+    },
+    clientHeight () {
+      this.calculateScrollData();
     }
   },
   components: {},
@@ -155,6 +159,13 @@ export default {
         this.setScrollWatch();
       });
     }
+    const that = this;
+    window.onresize = () => {
+      return (() => {
+        window.screenHeight = document.body.clientHeight;
+        that.clientHeight = window.screenHeight;
+      })();
+    };
   }
 };
 </script>

@@ -169,6 +169,7 @@ export default {
         height: 2rem;
         padding: .2rem 0;
         background: #f1f1f1;
+        z-index: 999;
         .tabs-tab{
           height: 1.6rem;
           display: inline-block;

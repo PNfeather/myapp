@@ -3,7 +3,7 @@
     <mt-header class="header" :title="`页面3`"></mt-header>
     <div class="content" id="scrollTabsElement">
       <div class="big" @click="changeHeight">前置内容</div>
-      <tabs v-model="activeKey" :changeType="`scroll`">
+      <tabs v-model="activeKey" :changeType="`scroll`" ref="tabsElement">
         <pane label="入门" name="1">
           <div class="big" ref="content1">内容1</div>
         </pane>
@@ -44,6 +44,7 @@ export default {
     },
     changeHeight () {
       this.$refs.content1.style.height = 300 + 'px';
+      this.$refs.tabsElement.updateNav();
     }
   }
 };

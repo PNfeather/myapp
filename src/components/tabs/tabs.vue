@@ -66,11 +66,10 @@ export default {
       this.updateStatus();
     },
     updateStatus () {
-      let tabs = this.getTabs();
-      let _this = this;
+      let panes = this.getTabs();
       if (this.changeType === 'click') {
-        tabs.forEach((tab) => {
-          return (tab.show = tab.name === _this.currentValue);
+        _.forEach(panes, (pane) => {
+          return (pane.show = pane.name === this.currentValue);
         });
       }
     },
@@ -113,7 +112,7 @@ export default {
         let lastPane = panes[panes.length - 1].$el;
         let lastPaneTop = parseInt(lastPane.offsetHeight);
         if (lastPaneTop < scrollElHeight) {
-          lastPane.style.marginBottom = scrollElHeight - lastPaneTop + 'px';
+          lastPane.style.marginBottom = scrollElHeight - lastPaneTop - navElHeight + 'px';
         }
       });
     },
@@ -132,7 +131,7 @@ export default {
           navElement.style.right = '0';
         }
         _.forEach(_this.navList, (item) => {
-          if (scrollTop >= item.scrollLimitMin && scrollTop <= item.scrollLimitMax) {
+          if (scrollTop >= item.scrollLimitMin && scrollTop < item.scrollLimitMax) {
             this.currentValue = item.name;
           }
         });
@@ -176,7 +175,6 @@ export default {
           margin-right: .3rem;
           background: #fff;
           border: 1px solid #d7dde4;
-          cursor: pointer;
           position: relative;
         }
         .tabs-tab-active{

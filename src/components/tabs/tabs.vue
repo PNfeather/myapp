@@ -30,7 +30,8 @@ export default {
       navList: [],
       navElTop: 0,
       scrollTimer: 0,
-      clientHeight: document.body.clientHeight
+      clientHeight: document.body.clientHeight,
+      heightChangeToggle: false
     };
   },
   methods: {
@@ -148,7 +149,14 @@ export default {
       this.updateStatus();
     },
     clientHeight () {
-      this.calculateScrollData();
+      if (!this.heightChangeToggle) {
+        let that = this;
+        this.calculateScrollData();
+        this.heightChangeToggle = true;
+        setTimeout(() => {
+          that.heightChangeToggle = false;
+        }, 400);
+      }
     }
   },
   components: {},

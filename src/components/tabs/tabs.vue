@@ -137,9 +137,11 @@ export default {
   components: {},
   created () {},
   mounted () {
-    this.$nextTick(() => {
-      this.setScrollWatch();
-    });
+    if (this.changeType === 'scroll') {
+      this.$nextTick(() => {
+        this.setScrollWatch();
+      });
+    }
   }
 };
 </script>

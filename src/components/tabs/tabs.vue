@@ -30,7 +30,7 @@ export default {
       navList: [],
       navElTop: 0,
       scrollTimer: 0,
-      tabsHeight: 0
+      scrollHeight: 0
     };
   },
   methods: {
@@ -105,7 +105,7 @@ export default {
         let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
         let navElHeight = parseInt(navElement.offsetHeight);
         this.navElTop = parseInt(navElement.offsetTop);
-        this.tabsHeight = this.$el.offsetHeight;
+        this.scrollHeight = parseInt(scrollElement.scrollHeight);
         let panes = this.getTabs();
         _.forEach(panes, (item, index) => {
           let el = item.$el;
@@ -123,10 +123,9 @@ export default {
       let _this = this;
       let scrollElement = document.getElementById('scrollTabsElement');
       let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
-      let tabsElement = this.$el;
       scrollElement.addEventListener('scroll', () => {
-        if (this.tabsHeight !== parseInt(tabsElement.offsetHeight)) {
-          this.tabsHeight = parseInt(tabsElement.offsetHeight);
+        if (this.scrollHeight !== parseInt(scrollElement.scrollHeight)) {
+          this.scrollHeight = parseInt(scrollElement.scrollHeight);
           this.calculateScrollData();
         }
         let scrollTop = Math.ceil(scrollElement.scrollTop);

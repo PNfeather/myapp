@@ -113,9 +113,10 @@ export default {
           this.navList[index].scrollLimitMax = el.offsetTop + el.offsetHeight - navElHeight;
         });
         let lastPane = panes[panes.length - 1].$el;
-        let lastPaneTop = parseInt(lastPane.offsetHeight);
-        if (lastPaneTop < scrollElHeight) {
-          lastPane.style.marginBottom = scrollElHeight - lastPaneTop - navElHeight + 'px';
+        let lastPaneTop = parseInt(lastPane.offsetTop);
+        let lastPaneHeight = parseInt(lastPane.offsetHeight);
+        if (this.scrollHeight - lastPaneTop < scrollElHeight) {
+          lastPane.style.height = lastPaneHeight + (scrollElHeight - (this.scrollHeight - lastPaneTop)) - navElHeight + 'px';
         }
       });
     },

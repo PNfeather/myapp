@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <mt-header class="header" :title="`页面3`"></mt-header>
-    <div class="content" id="scrollTabsElement">
+    <div class="content">
       <div class="big" @click="changeHeight" id="beforeContent">前置内容</div>
       <tabs v-model="activeKey" :changeType="`scroll`" ref="tabsElement" v-findScroll="goTop">
         <pane label="入门" name="1">

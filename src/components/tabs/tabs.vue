@@ -116,7 +116,7 @@ export default {
         let lastPaneTop = parseInt(lastPane.offsetTop);
         let lastPaneHeight = parseInt(lastPane.offsetHeight);
         if (this.scrollHeight - lastPaneTop < scrollElHeight) {
-          lastPane.style.height = lastPaneHeight + (scrollElHeight - (this.scrollHeight - lastPaneTop)) - navElHeight + 'px';
+          lastPane.style.height = lastPaneHeight + (scrollElHeight - (this.scrollHeight - lastPaneTop)) - navElHeight + 5 + 'px';
         }
       });
     },

@@ -3,7 +3,7 @@
     <mt-header class="header" :title="`页面3`"></mt-header>
     <div class="content" id="scrollTabsElement">
       <div class="big" @click="changeHeight" id="beforeContent">前置内容</div>
-      <tabs v-model="activeKey" :changeType="`scroll`" ref="tabsElement">
+      <tabs v-model="activeKey" :changeType="`scroll`" ref="tabsElement" v-findScroll="goTop">
         <pane label="入门" name="1">
           <div class="con" ref="content1">内容1</div>
         </pane>
@@ -50,6 +50,11 @@ export default {
     },
     changeHeight () {
       this.$refs.content1.style.height = 300 + 'px';
+    },
+    goTop () {
+      let targetEl = arguments[0];
+      let scrollEl = arguments[1];
+      scrollEl.scrollTop = targetEl.offsetTop - scrollEl.offsetTop;
     }
   }
 };

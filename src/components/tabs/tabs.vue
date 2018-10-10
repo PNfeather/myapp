@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs">
+  <div class="tabs" v-findScroll="getScrollEl">
     <div class="assistDiv">
       <div class="tabs-bar">
         <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)" :key="`tabs-bar${index}`">{{item.label}}</div>
@@ -29,6 +29,7 @@ export default {
       currentValue: this.value,
       navList: [],
       navElTop: 0,
+      scrollEl: null,
       scrollTimer: 0,
       scrollHeight: 0
     };
@@ -84,10 +85,10 @@ export default {
         this.$emit('on-click', name);
       }
       if (this.changeType === 'scroll') {
-        let scrollElement = document.getElementById('scrollTabsElement');
+        let scrollElement = this.scrollEl;
         if (this.scrollTimer) clearInterval(this.scrollTimer);
         this.scrollTimer = setInterval(() => {
-          if (Math.abs(scrollElement.scrollTop - nav.scrollLimitMin) < 10) {
+          if (Math.abs(scrollElement.scrollTop - nav.scrollLimitMin) < 50) {
             scrollElement.scrollTop = nav.scrollLimitMin;
             this.currentValue = name;
             clearInterval(this.scrollTimer);
@@ -100,7 +101,7 @@ export default {
     },
     calculateScrollData () {
       this.$nextTick(() => {
-        let scrollElement = document.getElementById('scrollTabsElement');
+        let scrollElement = this.scrollEl;
         let scrollElHeight = parseInt(scrollElement.offsetHeight);
         let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
         let navElHeight = parseInt(navElement.offsetHeight);
@@ -122,7 +123,7 @@ export default {
     },
     setScrollWatch () {
       let _this = this;
-      let scrollElement = document.getElementById('scrollTabsElement');
+      let scrollElement = this.scrollEl;
       let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
       scrollElement.addEventListener('scroll', () => {
         if (this.scrollHeight !== parseInt(scrollElement.scrollHeight)) {
@@ -144,6 +145,9 @@ export default {
           }
         });
       });
+    },
+    getScrollEl () {
+      this.scrollEl = arguments[1];
     }
   },
   watch: {

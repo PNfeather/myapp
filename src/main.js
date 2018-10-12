@@ -67,8 +67,7 @@ if ('addEventListener' in document) {
 new Vue({
   el: '#app',
   router,
-  render (createElement) {
-    return createElement('App');
-  },
-  components: { App }
+  render: h => {
+    return h(App);
+  }
 });

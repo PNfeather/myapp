@@ -27,6 +27,7 @@
 <script>
 import tabs from '@/components/tabs/tabs.vue';
 import pane from '@/components/tabs/pane.vue';
+import {scrollTo} from '@/tools/common';
 export default {
   name: 'test3',
   data () {
@@ -54,7 +55,9 @@ export default {
     goTop () {
       let targetEl = arguments[0];
       let scrollEl = arguments[1];
-      scrollEl.scrollTop = targetEl.offsetTop - scrollEl.offsetTop;
+      setTimeout(() => {
+        scrollTo(scrollEl, targetEl.offsetTop);
+      }, 3000);
     }
   }
 };

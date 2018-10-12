@@ -95,6 +95,7 @@ let EventUtil = {
   }
 };
 
+// 删除数组指定值元素
 let delArrEl = function (arr, someEl) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[0] !== someEl) {
@@ -105,6 +106,21 @@ let delArrEl = function (arr, someEl) {
   return arr;
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl};
+// 将元素滚动到目标位置
+let scrollTo = function (scrollEl, targetLt, callback) {
+  if (scrollEl.__VueScrollTimer__) clearInterval(scrollEl.__VueScrollTimer__);
+  scrollEl.__VueScrollTimer__ = setInterval(() => {
+    if (Math.abs(scrollEl.scrollTop - targetLt) < 50) {
+      scrollEl.scrollTop = targetLt;
+      if (callback) callback();
+      clearInterval(scrollEl.__VueScrollTimer__);
+      delete scrollEl.__VueScrollTimer__;
+    } else {
+      scrollEl.scrollTop -= (scrollEl.scrollTop - targetLt) / 10;
+    }
+  }, 20);
+};
 
-export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl};
+export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo};
+
+export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo};

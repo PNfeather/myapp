@@ -1,7 +1,7 @@
 <template>
   <div class="tabs" v-findScroll="getScrollEl">
     <div class="assistDiv">
-      <div class="tabs-bar">
+      <div class="tabs-bar" :class="{isFixed: navFixedToggle}">
         <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)" :key="`tabs-bar${index}`">{{item.label}}</div>
       </div>
     </div>
@@ -13,6 +13,7 @@
 
 <script>
 import _ from '@/plugins/lodash';
+import {scrollTo} from '@/tools/common';
 export default {
   name: 'tabs',
   props: {
@@ -31,7 +32,8 @@ export default {
       navElTop: 0,
       scrollEl: null,
       scrollTimer: 0,
-      scrollHeight: 0
+      scrollHeight: 0,
+      navFixedToggle: false
     };
   },
   methods: {
@@ -85,18 +87,9 @@ export default {
         this.$emit('on-click', name);
       }
       if (this.changeType === 'scroll') {
-        let scrollElement = this.scrollEl;
-        if (this.scrollTimer) clearInterval(this.scrollTimer);
-        this.scrollTimer = setInterval(() => {
-          if (Math.abs(scrollElement.scrollTop - nav.scrollLimitMin) < 50) {
-            scrollElement.scrollTop = nav.scrollLimitMin;
-            this.currentValue = name;
-            clearInterval(this.scrollTimer);
-            return false;
-          } else {
-            scrollElement.scrollTop -= (scrollElement.scrollTop - nav.scrollLimitMin) / 10;
-          }
-        }, 20);
+        scrollTo(this.scrollEl, nav.scrollLimitMin, () => {
+          this.currentValue = name;
+        });
       }
     },
     calculateScrollData () {
@@ -124,7 +117,6 @@ export default {
     setScrollWatch () {
       let _this = this;
       let scrollElement = this.scrollEl;
-      let navElement = this.$el.getElementsByClassName('tabs-bar')[0];
       scrollElement.addEventListener('scroll', () => {
         if (this.scrollHeight !== parseInt(scrollElement.scrollHeight)) {
           this.scrollHeight = parseInt(scrollElement.scrollHeight);
@@ -132,12 +124,9 @@ export default {
         }
         let scrollTop = Math.ceil(scrollElement.scrollTop);
         if (this.navElTop > scrollTop) {
-          navElement.style.position = 'static';
+          this.navFixedToggle = false;
         } else {
-          navElement.style.position = 'fixed';
-          navElement.style.top = '2.25rem';
-          navElement.style.left = '0';
-          navElement.style.right = '0';
+          this.navFixedToggle = true;
         }
         _.forEach(_this.navList, (item) => {
           if (scrollTop >= item.scrollLimitMin && scrollTop < item.scrollLimitMax) {
@@ -176,6 +165,12 @@ export default {
     color: #657180;
     .assistDiv{
       height: 2rem;
+      .isFixed{
+        position: fixed;
+        top: 2.25rem;
+        left: 0;
+        right: 0;
+      }
       .tabs-bar{
         height: 2rem;
         padding: .2rem 0;

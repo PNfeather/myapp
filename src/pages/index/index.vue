@@ -8,6 +8,7 @@
 </template>
 
 <script>
+  import {delArrEl} from '@/tools/common';
   export default {
     name: 'firstPage',
     data () {
@@ -17,8 +18,12 @@
       };
     },
     mounted () {
+      console.log(this.del([1, 2, 2, 3], 2));
     },
     methods: {
+      del (arr, val) {
+        return delArrEl(arr, val);
+      },
       jumpTest () {
         this.$router.push({'path': '/test1'});
       },

@@ -95,6 +95,16 @@ let EventUtil = {
   }
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil};
+let delArrEl = function (arr, someEl) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[0] !== someEl) {
+      arr.push(arr[0]);
+    }
+    arr.shift(arr[0]);
+  }
+  return arr;
+};
 
-export {commonTime, addFunToOldFun, getCss, EventUtil};
+export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl};
+
+export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl};

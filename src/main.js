@@ -8,6 +8,7 @@ import http from '@/plugins/http';
 import '@/plugins/longTouch';
 import '@/plugins/clickOutside';
 import '@/plugins/findScroll';
+import '@/plugins/dragElement';
 import {
   Header, Button, Popup, Swipe, SwipeItem, Tabbar, TabItem, MessageBox, Toast, InfiniteScroll, Spinner, Loadmore, Picker, Indicator, DatetimePicker, TabContainer, TabContainerItem, CellSwipe, Switch, Lazyload
 } from 'mint-ui';

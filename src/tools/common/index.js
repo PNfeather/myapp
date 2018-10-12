@@ -121,6 +121,24 @@ let scrollTo = function (scrollEl, targetLt, callback) {
   }, 20);
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo};
+// 属性变化
+let arrMove = function (el, attr, targetLt) {
+  let elLt;
+  if (attr === 'left') elLt = el.offsetLeft;
+  if (attr === 'top') elLt = el.offsetTop;
+  if (el.__VueDragTimer__) clearInterval(el.__VueDragTimer__);
+  el.__VueDragTimer__ = setInterval(() => {
+    if (Math.abs(elLt - targetLt) < 5) {
+      el.style[attr] = targetLt + 'px';
+      clearInterval(el.__VueDragTimer__);
+      delete el.__VueDragTimer__;
+    } else {
+      elLt -= (elLt - targetLt) / 40;
+      el.style[attr] = elLt + 'px';
+    }
+  }, 5);
+};
 
-export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo};
+export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove};
+
+export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove};

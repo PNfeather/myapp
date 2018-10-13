@@ -19,7 +19,7 @@
           </div>
         </pane>
       </tabs>
-      <div class="big" style="height: 10rem" v-show="true">后置内容</div>
+      <div class="con" v-show="true">后置内容</div>
     </div>
   </div>
 </template>

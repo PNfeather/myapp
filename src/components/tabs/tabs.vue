@@ -108,9 +108,9 @@ export default {
         });
         let lastPane = panes[panes.length - 1].$el;
         let lastPaneTop = parseInt(lastPane.offsetTop);
-        let lastPaneHeight = parseInt(lastPane.offsetHeight);
         if (this.scrollHeight - lastPaneTop < scrollElHeight) {
-          lastPane.style.height = lastPaneHeight + (scrollElHeight - (this.scrollHeight - lastPaneTop)) - navElHeight + 5 + 'px';
+          let lastElement = this.scrollEl.lastElementChild;
+          lastElement.style.height = lastElement.offsetHeight + (scrollElHeight - (this.scrollHeight - lastPaneTop)) - navElHeight + 5 + 'px';
         }
       });
     },

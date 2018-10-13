@@ -7,13 +7,13 @@ Vue.directive('dragElement', {
     let startY;
     let pageWidth = document.documentElement.clientWidth;
     let pageHeight = document.documentElement.clientHeight;
-    el.ontouchstart = (event) => {
+    el.addEventListener('touchstart', (event) => {
       if (el.__VueDragTimer__) clearInterval(el.__VueDragTimer__);
       let touch = event.touches[0];
       startX = parseInt(touch.pageX - el.offsetLeft);
       startY = parseInt(touch.pageY - el.offsetTop);
-    };
-    el.ontouchmove = (event) => {
+    });
+    el.addEventListener('touchmove', (event) => {
       event.preventDefault();
       let touch = event.touches[0];
       let movePageX = parseInt(touch.pageX - startX);
@@ -30,8 +30,8 @@ Vue.directive('dragElement', {
       }
       el.style.left = movePageX + 'px';
       el.style.top = movePageY + 'px';
-    };
-    el.ontouchend = () => {
+    });
+    el.addEventListener('touchend', () => {
       if (el.offsetTop <= 100) {
         arrMove(el, 'top', 0);
       } else if (pageHeight - (el.offsetTop - 0 + el.offsetHeight) <= 100) {
@@ -43,7 +43,7 @@ Vue.directive('dragElement', {
           arrMove(el, 'left', (pageWidth - el.offsetWidth));
         }
       }
-    };
+    });
   },
   unbind: function (el) {
     delete el.__VueDragTimer__;

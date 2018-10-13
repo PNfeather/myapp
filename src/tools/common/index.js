@@ -139,6 +139,19 @@ let arrMove = function (el, attr, targetLt) {
   }, 5);
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove};
+// 添加页面加载完成事件
+let addLoadEvent = function (fun) {
+  let olderOnload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = fun;
+  } else {
+    window.onload = function () {
+      olderOnload();
+      fun();
+    };
+  }
+};
 
-export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove};
+export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove, addLoadEvent};
+
+export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove, addLoadEvent};

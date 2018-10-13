@@ -23,4 +23,6 @@ _.omit = _lodash.omit;
 _.remove = _lodash.remove;
 _.zipWith = _lodash.zipWith;
 _.cloneDeep = _lodash.cloneDeep;
+_.filter = _lodash.filter;
+_.minBy = _lodash.minBy;
 export default _;

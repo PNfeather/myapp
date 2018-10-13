@@ -121,24 +121,6 @@ let scrollTo = function (scrollEl, targetLt, callback) {
   }, 20);
 };
 
-// 属性变化
-let arrMove = function (el, attr, targetLt) {
-  let elLt;
-  if (attr === 'left') elLt = el.offsetLeft;
-  if (attr === 'top') elLt = el.offsetTop;
-  if (el.__VueDragTimer__) clearInterval(el.__VueDragTimer__);
-  el.__VueDragTimer__ = setInterval(() => {
-    if (Math.abs(elLt - targetLt) < 5) {
-      el.style[attr] = targetLt + 'px';
-      clearInterval(el.__VueDragTimer__);
-      delete el.__VueDragTimer__;
-    } else {
-      elLt -= (elLt - targetLt) / 40;
-      el.style[attr] = elLt + 'px';
-    }
-  }, 5);
-};
-
 // 添加页面加载完成事件
 let addLoadEvent = function (fun) {
   let olderOnload = window.onload;
@@ -152,6 +134,6 @@ let addLoadEvent = function (fun) {
   }
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove, addLoadEvent};
+export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent};
 
-export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, arrMove, addLoadEvent};
+export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent};

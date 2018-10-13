@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {arrMove} from '@/tools/common';
+import {endDragMove} from './methods';
 
 Vue.directive('dragElement', {
   bind: function (el) {
@@ -32,20 +32,11 @@ Vue.directive('dragElement', {
       el.style.top = movePageY + 'px';
     });
     el.addEventListener('touchend', () => {
-      if (el.offsetTop <= 100) {
-        arrMove(el, 'top', 0);
-      } else if (pageHeight - (el.offsetTop - 0 + el.offsetHeight) <= 100) {
-        arrMove(el, 'top', (pageHeight - el.offsetHeight));
-      } else {
-        if ((el.offsetLeft - 0 + el.offsetWidth / 2) <= (pageWidth / 2)) {
-          arrMove(el, 'left', 0);
-        } else {
-          arrMove(el, 'left', (pageWidth - el.offsetWidth));
-        }
-      }
+      endDragMove(el);
     });
   },
   unbind: function (el) {
+    if (el.__VueDragTimer__) clearInterval(el.__VueDragTimer__);
     delete el.__VueDragTimer__;
   }
 });

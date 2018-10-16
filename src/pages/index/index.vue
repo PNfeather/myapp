@@ -38,7 +38,9 @@
         this.show = false;
       },
       clickDragEl () {
-        console.log('点击');
+        this.$store.dispatch('getNumAndChange', {'numType': 'numA', 'value': 2}).then(() => {
+          console.log(this.$store.state.numA);
+        });
       }
     },
     components: {}

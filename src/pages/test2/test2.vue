@@ -1,7 +1,8 @@
 <template>
   <div class="firstPage" @click="jumpHome">
     <mt-header :title="`你好`"></mt-header>
-    {{ msg }}
+    <p>{{ msg }}</p>
+    <p v-text="getSum()"></p>
   </div>
 </template>
 
@@ -16,6 +17,9 @@ export default {
   methods: {
     jumpHome () {
       this.$router.push({'path': '/test3'});
+    },
+    getSum () {
+      return this.$store.getters.sumState(2);
     }
   }
 };

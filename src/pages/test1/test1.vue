@@ -13,6 +13,19 @@
       </pane>
       <pane label="标签3" name="3">
         标签三的内容
+        <div v-for="item in [1, 2, 3, 4]" :key="item">
+          <mt-cell-swipe ref="swipeElement"
+                         :right="[
+        {
+          content: '删除',
+          style: { background: 'red', color: '#fff'},
+          handler: () => $messagebox('delete')
+        }
+      ]"
+          >
+            <div class="swipeContent" v-swipeClick="swipeClick(item)">这是一个点击内容</div>
+          </mt-cell-swipe>
+        </div>
         <span @click="jumpHome">去test2</span>
       </pane>
     </tabs>
@@ -45,6 +58,35 @@ export default {
         clearInterval(el.__timeout__);
         delete el.__timeout__;
       }
+    },
+    swipeClick: {
+      bind: function (el, binding) {
+        let handler = binding.value;
+        let startX;
+        let startY;
+        let displacementX;
+        let displacementY;
+        el.addEventListener('touchstart', (event) => {
+          let touch = event.touches[0];
+          startX = parseInt(touch.pageX);
+          startY = parseInt(touch.pageY);
+          displacementX = 0;
+          displacementY = 0;
+        });
+        el.addEventListener('touchmove', (event) => {
+          event.preventDefault();
+          let touch = event.touches[0];
+          let movePageX = parseInt(touch.pageX);
+          let movePageY = parseInt(touch.pageY);
+          displacementX = Math.abs(movePageX - startX);
+          displacementY = Math.abs(movePageY - startY);
+        });
+        el.addEventListener('touchend', () => {
+          if (displacementX < 10 && displacementY < 10) {
+            handler();
+          }
+        });
+      }
     }
   },
   created () {
@@ -54,6 +96,11 @@ export default {
     pane
   },
   methods: {
+    swipeClick (val) {
+      return () => {
+        console.log('参数为' + val);
+      };
+    },
     jumpHome () {
       this.$router.push({'path': '/test2'});
     },
@@ -67,4 +114,9 @@ export default {
 };
 </script>
 <style scoped>
+  .swipeContent{
+    width: 100%;
+    height: 2.4rem;
+    line-height: 2.4rem;
+  }
 </style>

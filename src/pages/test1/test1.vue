@@ -1,35 +1,45 @@
 <template>
-  <div>
-    <tabs v-model="activeKey">
-      <pane label="标签1" name="1">
-        标签一的内容
-        <span @click.stop="openShowMore">这是:</span>
-        <div v-show="showMore" v-clickOutside="hideShowMore">隐藏内容</div>
-      </pane>
-      <pane label="标签2" name="2">
-        标签二的内容
-        <p v-time="timeNow"></p>
-        <p v-time="timeBefore"></p>
-      </pane>
-      <pane label="标签3" name="3">
-        标签三的内容
-        <div v-for="item in [1, 2, 3, 4]" :key="item">
-          <mt-cell-swipe ref="swipeElement"
-                         :right="[
+  <app-page>
+    <app-header :title="title">
+    </app-header>
+    <div>
+      <tabs v-model="activeKey">
+        <pane label="标签1" name="1">
+          标签一的内容
+          <span @click.stop="openShowMore">这是:</span>
+          <div v-show="showMore" v-clickOutside="hideShowMore">隐藏内容</div>
+        </pane>
+        <pane label="标签2" name="2">
+          标签二的内容
+          <p v-time="timeNow"></p>
+          <p v-time="timeBefore"></p>
+        </pane>
+        <pane label="标签3" name="3">
+          标签三的内容
+          <div v-for="item in [1, 2, 3, 4]" :key="item">
+            <mt-cell-swipe ref="swipeElement"
+                           :right="[
         {
           content: '删除',
           style: { background: 'red', color: '#fff'},
           handler: () => $messagebox('delete')
         }
       ]"
-          >
-            <div class="swipeContent" v-swipeClick="swipeClick(item)">这是一个点击内容</div>
-          </mt-cell-swipe>
-        </div>
-        <span @click="jumpHome">去test2</span>
-      </pane>
-    </tabs>
-  </div>
+            >
+              <div class="swipeContent" v-swipeClick="swipeClick(item)">这是一个点击内容</div>
+            </mt-cell-swipe>
+          </div>
+          <span @click="jumpHome">去test2</span>
+        </pane>
+      </tabs>
+    </div>
+    <div class="dragElement" v-dragElement @click="clickDragEl">
+    </div>
+    <div class="firstPage" @click="jumpTest1('normal')" v-longTouch="longTouch">
+      <p>{{ msg }}</p>
+      <p v-show="show" v-clickOutside="hideSelf" @click="jumpTest1()">这是一个作者通道</p>
+    </div>
+  </app-page>
 </template>
 
 <script>
@@ -40,9 +50,12 @@ export default {
   name: 'test1',
   data () {
     return {
+      title: '测试1',
       activeKey: '1',
       showMore: false,
       timeNow: new Date().getTime(),
+      msg: '跳转',
+      show: false,
       timeBefore: 1538215500925
     };
   },
@@ -96,6 +109,20 @@ export default {
     pane
   },
   methods: {
+    jumpTest1 (type) {
+      if (type === 'normal') {
+        if (this.$store.state.numA < 20) {
+          return false;
+        }
+      }
+      this.$router.push({'path': '/test1'});
+    },
+    longTouch () {
+      this.show = true;
+    },
+    hideSelf () {
+      this.show = false;
+    },
     swipeClick (val) {
       return () => {
         console.log('参数为' + val);
@@ -109,6 +136,10 @@ export default {
     },
     hideShowMore () {
       this.showMore = false;
+    },
+    clickDragEl () {
+      this.$toast('点击10次神奇按钮或者长按跳转可以到达第二页');
+      this.$store.dispatch('getNumAndChange', {'numType': 'numA', 'value': 2});
     }
   }
 };
@@ -118,5 +149,14 @@ export default {
     width: 100%;
     height: 2.4rem;
     line-height: 2.4rem;
+  }
+  .dragElement{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    background: #5CD4FE;
+    position: absolute;
+    bottom: 0;right: 0;
+    z-index: 9999999;
   }
 </style>

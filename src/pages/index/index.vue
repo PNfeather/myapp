@@ -5,8 +5,9 @@
         <i class="iconfont icon-tiaozhuan"></i>
       </div>
     </app-header>
-    <main class="content">
-    </main>
+    <app-main>
+      <div class="div" v-for="(item, index) in [1, 2, 3, 4]" :key="index">这是内容{{index}}</div>
+    </app-main>
   </app-page>
 </template>
 
@@ -32,5 +33,9 @@
   .icon-tiaozhuan{
     color: #5CD4FE;
     font-size: 1rem;
+  }
+  .div{
+    height: 20rem;
+    width: 100%;
   }
 </style>

@@ -10,6 +10,8 @@ import '@/plugins/longTouch';
 import '@/plugins/clickOutside';
 import '@/plugins/findScroll';
 import '@/plugins/dragElement';
+import Page from '@/components/page/page';
+import header from '@/components/header/header';
 import {
   Header, Button, Popup, Swipe, SwipeItem, Tabbar, TabItem, MessageBox, Toast, InfiniteScroll, Spinner, Loadmore, Picker, Indicator, DatetimePicker, TabContainer, TabContainerItem, CellSwipe, Switch, Lazyload
 } from 'mint-ui';
@@ -45,6 +47,9 @@ Vue.$swipe = Vue.prototype.$swipe = Swipe;
 Vue.config.productionTip = false;
 
 Vue.use(http.install);
+
+Vue.component(Page.name, Page);
+Vue.component(header.name, header);
 
 if ('addEventListener' in document) {
   // fastclick设置

@@ -1,13 +1,16 @@
 <template>
-  <main class="content">
-    <div class="firstPage" @click="jumpTest1('normal')" v-longTouch="longTouch">
-      <p>{{ msg }}</p>
-      <p v-show="show" v-clickOutside="hideSelf" @click="jumpTest1()">这是一个作者通道</p>
-    </div>
-    <div class="dragElement" v-dragElement @click="clickDragEl">
-      <p>神奇按钮</p>
-    </div>
-  </main>
+  <app-page>
+    <app-header :title="title" :needBack="false"></app-header>
+    <main class="content">
+      <div class="firstPage" @click="jumpTest1('normal')" v-longTouch="longTouch">
+        <p>{{ msg }}</p>
+        <p v-show="show" v-clickOutside="hideSelf" @click="jumpTest1()">这是一个作者通道</p>
+      </div>
+      <div class="dragElement" v-dragElement @click="clickDragEl">
+        <p>神奇按钮</p>
+      </div>
+    </main>
+  </app-page>
 </template>
 
 <script>
@@ -16,6 +19,7 @@
     name: 'firstPage',
     data () {
       return {
+        title: '首页',
         msg: '跳转',
         show: false
       };

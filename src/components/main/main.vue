@@ -61,6 +61,11 @@
       this.$nextTick(() => {
         this.initScroll();
       });
+    },
+    watch: {
+      main (val) {
+        this.$emit('input', val);
+      }
     }
   };
 </script>

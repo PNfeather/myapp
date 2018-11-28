@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs" v-findScroll="getScrollEl">
+  <div class="tabs" ref="tabs" v-findScroll="getScrollEl">
     <div class="assistDiv">
       <div class="tabs-bar" :class="{isFixed: navFixedToggle}">
         <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)" :key="`tabs-bar${index}`">{{item.label}}</div>
@@ -110,6 +110,9 @@ export default {
         let lastPaneTop = parseInt(lastPane.offsetTop);
         if (this.scrollHeight - lastPaneTop < scrollElHeight) {
           let lastElement = this.scrollEl.lastElementChild;
+          if (this.scrollEl.lastElementChild === this.$refs.tabs) {
+            lastElement = lastPane;
+          }
           lastElement.style.height = lastElement.offsetHeight + (scrollElHeight - (this.scrollHeight - lastPaneTop)) - navElHeight + 5 + 'px';
         }
       });

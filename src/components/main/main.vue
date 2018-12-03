@@ -8,6 +8,8 @@
 
 <script>
   import BScroll from 'better-scroll';
+  import {watchResize} from '@/tools/common';
+  import {mapState} from 'vuex';
   export default {
     name: 'app-main',
     props: {
@@ -29,6 +31,9 @@
         main: ''
       };
     },
+    computed: {
+      ...mapState(['isFirstRouter'])
+    },
     methods: {
       initScroll () {
         this.main = new BScroll(this.$refs.main, {
@@ -36,25 +41,22 @@
           scrollX: this.scrollX,
           probeType: this.probeType
         });
-        this.main.on('scrollStart', () => {
-          this.computedNeedRefresh();
-        });
+        if (this.isFirstRouter) {
+          watchResize(this.scrollRefresh);
+        }
+        this.computedNeedRefresh();
       },
-      refresh () {
+      scrollRefresh () {
         this.main && this.main.refresh();
       },
-      scrollTo () {
-        this.main && this.main.scrollTo.apply(this.main, arguments);
-      },
-      scrollToElement () {
-        this.main && this.main.scrollToElement.apply(this.main, arguments);
-      },
       computedNeedRefresh () { // 计算是否需要refresh
-        let maxY = Math.abs(this.main.maxScrollY);
-        let currentY = Math.abs(this.$refs.wrapper.offsetHeight - this.$refs.main.offsetHeight);
-        if (Math.abs(maxY - currentY) > 5) {
-          this.refresh();
-        }
+        this.main.on('scrollStart', () => {
+          let maxY = Math.abs(this.main.maxScrollY);
+          let currentY = Math.abs(this.$refs.wrapper.offsetHeight - this.$refs.main.offsetHeight);
+          if (Math.abs(maxY - currentY) > 5) {
+            this.main.refresh();
+          }
+        });
       }
     },
     mounted () {
@@ -63,8 +65,8 @@
       });
     },
     watch: {
-      main (val) {
-        this.$emit('input', val);
+      main () {
+        this.$emit('input', {instance: this, BScrollName: 'main'});
       }
     }
   };

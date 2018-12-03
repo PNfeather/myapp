@@ -1,7 +1,9 @@
 <template>
     <app-page>
         <app-header :title="title"></app-header>
-        <main></main>
+        <main>
+          <div @click="goTest2">返回test2</div>
+        </main>
     </app-page>
 </template>
 
@@ -19,7 +21,11 @@
             title: '指令测试页面'
         };
       },
-      methods: {},
+      methods: {
+        goTest2 () {
+          this.$router.go('test3');
+        }
+      },
       components: {},
       created () {},
       mounted () {}

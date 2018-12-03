@@ -134,6 +134,16 @@ let addLoadEvent = function (fun) {
   }
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent};
+// 屏幕尺寸变化监听
+let watchResize = function (callBack) {
+  let resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+  let reSize = function () {
+    callBack();
+  };
+  window.addEventListener(resizeEvent, reSize, false);
+  document.addEventListener('DOMContentLoaded', reSize, false);
+};
 
-export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent};
+export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent, watchResize};
+
+export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent, watchResize};

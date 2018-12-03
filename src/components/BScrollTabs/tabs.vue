@@ -40,7 +40,8 @@ export default {
       navElTop: 0,
       scrollTimer: 0,
       scrollHeight: 0,
-      navFixedTop: 0
+      navFixedTop: 0,
+      reScroll: false
     };
   },
   methods: {
@@ -90,10 +91,17 @@ export default {
       }
     },
     handleChange (index) {
+      this.reScroll = false;
       let nav = this.navList[index];
       let name = nav.name;
       this.currentValue = name;
+      this.copyBScroll.stop();
       this.copyBScroll.scrollTo(0, -this.navList[index].scrollLimitMin, 400);
+      setTimeout(() => {
+        if (this.reScroll) {
+          this.handleChange(index);
+        };
+      }, 20);
     },
     calculateScrollData () { // 计算每个pane所占用的高度区域，最后一个不足屏幕时补足
       this.$nextTick(() => {
@@ -123,7 +131,7 @@ export default {
     setScrollWatch () {
       let _this = this;
       this.copyBScroll.on('scrollEnd', ({y}) => {
-        if (_this.navElTop) {
+        if (_this.navElTop || _this.navElTop === 0) {
           let scrollTop = Math.ceil(Math.abs(y));
           if (_this.navElTop > scrollTop) {
             _this.navFixedTop = 0;
@@ -137,8 +145,9 @@ export default {
           });
         }
       });
-      this.copyBScroll.on('scroll', ({y}) => {
+      this.copyBScroll.on('scroll', () => {
         if (_this.scrollHeight !== parseInt(_this.copyBScroll.scrollerHeight)) {
+          this.reScroll = true;
           _this.scrollHeight = parseInt(_this.copyBScroll.scrollerHeight);
           _this.calculateScrollData();
         }

@@ -35,7 +35,7 @@ Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Switch.name, Switch);
 
 Vue.use(InfiniteScroll);
-Vue.use(Lazyload, {
+Vue.use(Lazyload, { // 配置懒加载默认图片
   loading: require('./assets/image/defaultImage.png'),
   attempt: 3
 });

@@ -9,7 +9,7 @@ export default {
   name: 'unfind',
   data () {
     return {
-      msg: '迷失页'
+      msg: '来到了火星，点击返回首页'
     };
   },
   methods: {

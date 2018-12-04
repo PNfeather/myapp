@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
     store.dispatch('doPushRouterHistory', to.name);
   }
   if (to.meta.pageMark) {
-    console.log('页面有个标记:' + to.meta.pageMark);
+    console.log('页面有个标记:' + to.meta.pageMark + ',可以用来做类似需要登录的操作');
   }
   next();
 });

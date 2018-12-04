@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <mt-header class="header" :title="`页面3`"></mt-header>
+    <app-header class="header" :title="title"></app-header>
     <div class="content">
       <div class="big" @click="changeHeight" id="beforeContent">前置内容</div>
       <tabs v-model="activeKey" :changeType="`scroll`" v-findScroll="goTop">
@@ -25,42 +25,43 @@
 </template>
 
 <script>
-import tabs from '@/components/tabs/tabs.vue';
-import pane from '@/components/tabs/pane.vue';
-import {scrollTo} from '@/tools/common';
-export default {
-  name: 'test3',
-  data () {
-    return {
-      activeKey: '1',
-      msg: 'test3Page'
-    };
-  },
-  components: {
-    tabs,
-    pane
-  },
-  mounted () {
-    setTimeout(() => {
-      document.getElementById('beforeContent').style.height = 300 + 'px';
-    }, 2000);
-  },
-  methods: {
-    jumpHome () {
-      this.$router.push({'path': '/'});
+  import tabs from '@/components/tabs/tabs.vue';
+  import pane from '@/components/tabs/pane.vue';
+  import {scrollTo} from '@/tools/common';
+  export default {
+    name: 'test3',
+    data () {
+      return {
+        activeKey: '1',
+        title: 'tabs测试页',
+        msg: 'test3Page'
+      };
     },
-    changeHeight () {
-      this.$refs.content1.style.height = 300 + 'px';
+    components: {
+      tabs,
+      pane
     },
-    goTop () {
-      let targetEl = arguments[0];
-      let scrollEl = arguments[1];
+    mounted () {
       setTimeout(() => {
-        scrollTo(scrollEl, targetEl.offsetTop);
-      }, 3000);
+        document.getElementById('beforeContent').style.height = 300 + 'px';
+      }, 2000);
+    },
+    methods: {
+      jumpHome () {
+        this.$router.push({'path': '/'});
+      },
+      changeHeight () {
+        this.$refs.content1.style.height = 300 + 'px';
+      },
+      goTop () {
+        let targetEl = arguments[0];
+        let scrollEl = arguments[1];
+        setTimeout(() => {
+          scrollTo(scrollEl, targetEl.offsetTop);
+        }, 3000);
+      }
     }
-  }
-};
+  };
 </script>
 <style lang="less" scoped>
   .page{

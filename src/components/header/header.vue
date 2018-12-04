@@ -48,7 +48,7 @@ export default {
     };
   },
   methods: {
-    back () {
+    back () { // 点击返回执行方法
       if (this.needCustomBack) {
         return this.$emit('customBack');
       }
@@ -68,6 +68,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
+  @import '../../style/common.less';
   .app-mint-header{
     height: 2.25rem;
     line-height: 2.25rem;
@@ -75,12 +76,7 @@ export default {
     color: #333;
     font-size: 0.7rem;
     &:after{
-      content: '';
-      position: absolute;
-      right: 0;bottom: 0;left: 0;
-      height: 1px;
-      border-bottom: 1px solid #ddd;
-      transform: scaleY(0.5);
+      .border-bottom();
     }
   }
   .backBtn{

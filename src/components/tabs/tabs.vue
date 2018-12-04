@@ -11,6 +11,8 @@
   </div>
 </template>
 
+<!--这是一个未集成betterscroll的切换滚动组件，注释键BScrollTabs-->
+
 <script>
 import _ from '@/plugins/lodash';
 import {scrollTo} from '@/tools/common';

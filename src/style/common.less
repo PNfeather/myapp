@@ -1,0 +1,101 @@
+//上边框线
+.border-top (@width: 100%, @offset: 0px, @color: #e7e7e7, @borderWidth: 1px) {
+  content: '';
+  position: absolute;
+  right: 0;left: @offset;
+  height: @borderWidth;width: @width;
+  border-top: @borderWidth solid @color;
+  transform-origin: 0 0;
+  @media only screen and (-webkit-max-device-pixel-ratio: 2) {
+    top: -0.5 * @borderWidth;
+    transform: scaleY(0.5);
+  }
+  @media only screen and (-webkit-max-device-pixel-ratio: 3) {
+    top: -0.666 * @borderWidth;
+    transform: scaleY(0.333);
+  }
+}
+//下边框线
+.border-bottom (@width: 100%, @offset: 0px, @color: #e7e7e7, @borderWidth: 1px) {
+  content: '';
+  position: absolute;
+  right: 0;left: @offset;
+  height: @borderWidth;
+  width: @width;
+  border-top: @borderWidth solid @color;
+  transform-origin: 0 0;
+  @media only screen and (-webkit-max-device-pixel-ratio: 2) {
+    bottom: -0.5 * @borderWidth;
+    transform: scaleY(0.5);
+  }
+  @media only screen and (-webkit-max-device-pixel-ratio: 3) {
+    bottom: -0.666 * @borderWidth;
+    transform: scaleY(0.333);
+  }
+}
+//右边框线
+.border-right (@width: 100%, @offset: 0px, @color: #e7e7e7, @borderWidth: 1px) {
+  content: '';
+  position: absolute;
+  top: @offset;bottom: 0;
+  height: @width;width: @borderWidth;
+  border-top: @borderWidth solid @color;
+  transform-origin: 0 0;
+  @media only screen and (-webkit-max-device-pixel-ratio: 2) {
+    right: -0.5 * @borderWidth;
+    transform: scaleX(0.5);
+  }
+  @media only screen and (-webkit-max-device-pixel-ratio: 3) {
+    right: -0.666 * @borderWidth;
+    transform: scaleX(0.333);
+  }
+}
+//左边框线
+.border-left (@width: 100%, @offset: 0px, @color: #e7e7e7, @borderWidth: 1px) {
+  content: '';
+  position: absolute;
+  top: @offset;bottom: 0;
+  height: @width;width: @borderWidth;
+  border-top: @borderWidth solid @color;
+  transform-origin: 0 0;
+  @media only screen and (-webkit-max-device-pixel-ratio: 2) {
+    left: -0.5 * @borderWidth;
+    transform: scaleX(0.5);
+  }
+  @media only screen and (-webkit-max-device-pixel-ratio: 3) {
+    left: -0.666 * @borderWidth;
+    transform: scaleX(0.333);
+  }
+}
+//上三角
+.square-top (@width: .5rem, @color: #fff) {
+  content: '';
+  position: absolute;
+  border-bottom: @width solid @color;
+  border-right: @width solid  transparent;
+  border-left: @width solid transparent;
+}
+//下三角
+.square-bottom (@width: .5rem, @color: #fff) {
+  content: '';
+  position: absolute;
+  border-top: @width solid @color;
+  border-right: @width solid  transparent;
+  border-left: @width solid transparent;
+}
+//左三角
+.square-left (@width: .5rem, @color: #fff) {
+  content: '';
+  position: absolute;
+  border-right: @width solid @color;
+  border-top: @width solid  transparent;
+  border-bottom: @width solid transparent;
+}
+//右三角
+.square-right (@width: .5rem, @color: #fff) {
+  content: '';
+  position: absolute;
+  border-left: @width solid @color;
+  border-top: @width solid  transparent;
+  border-bottom: @width solid transparent;
+}

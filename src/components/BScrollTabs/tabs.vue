@@ -15,6 +15,8 @@
   </div>
 </template>
 
+<!--这是一个集成了betterScroll的滚动切换组件-->
+
 <script>
 import _ from '@/plugins/lodash';
 import {watchResize} from '@/tools/common';
@@ -23,29 +25,28 @@ import {mapState} from 'vuex';
 export default {
   name: 'tabs',
   props: {
-    value: {
+    value: { // 点击头部标签
       type: [String, Number]
     },
-    scrollObj: {
+    scrollObj: { // 父级betterScroll实例传出对象
       type: [String, Object]
     }
   },
   data () {
     return {
-      currentValue: this.value,
-      copyBScroll: null,
-      copyScrollEl: null,
-      titleScroll: '',
-      navList: [],
-      navElTop: 0,
-      scrollTimer: 0,
-      scrollHeight: 0,
-      navFixedTop: 0,
-      reScroll: false
+      currentValue: this.value, // 获取当前点击头部的value值
+      copyBScroll: null, // 获取父级betterScroll对象
+      copyScrollEl: null, // 获取父级betterScroll元素
+      titleScroll: '', // 头部标签左右滚动betterScroll对象
+      navList: [], // 头部数据缓存数组
+      navElTop: 0, // 头部标签距离copyScrollEl头部边线的距离
+      scrollHeight: 0, // copyScrollEl的滚动区域
+      navFixedTop: 0, // 滚动后头部定位位置
+      reScroll: false // 确认滚动是否计算完好
     };
   },
   methods: {
-    tabCls (item) {
+    tabCls (item) { // 获取头部样式
       return [
         'tabs-tab',
         {
@@ -53,12 +54,12 @@ export default {
         }
       ];
     },
-    getTabs () {
+    getTabs () { // 获取子类pane实例
       return this.$children.filter((item) => {
         return item.$options.name === 'pane';
       });
     },
-    updateNav () {
+    updateNav () { // 计算navList，及滚动相关数据
       this.navList = [];
       _.forEach(this.getTabs(), (pane, index) => {
         this.navList.push({
@@ -74,7 +75,7 @@ export default {
       });
       this.calculateScrollData();
     },
-    loadTitleScroll () {
+    loadTitleScroll () { // 初始化头部betterScroll或重加载
       if (this.titleScroll) {
         this.titleScroll.refresh();
       } else {
@@ -90,7 +91,7 @@ export default {
         this.main.refresh();
       }
     },
-    handleChange (index) {
+    handleChange (index) { // 点击头部切换
       this.reScroll = false;
       let nav = this.navList[index];
       let name = nav.name;
@@ -128,7 +129,7 @@ export default {
         }
       });
     },
-    setScrollWatch () {
+    setScrollWatch () { // 设置滚动相关监听
       let _this = this;
       this.copyBScroll.on('scrollEnd', ({y}) => {
         if (_this.navElTop || _this.navElTop === 0) {
@@ -159,10 +160,10 @@ export default {
     value (val) {
       this.currentValue = val;
     },
-    currentValue (val) {
+    currentValue (val) { // 头部标签左右自动滚动
       this.titleScroll && this.titleScroll.scrollToElement(this.$refs['tabs-bar-li-' + val][0], 400, true, 0);
     },
-    scrollObj (val) {
+    scrollObj (val) { // 获取父级betterScroll数据
       this.copyBScroll = val.instance[val.BScrollName];
       this.copyScrollEl = val.instance.$el;
       this.setScrollWatch();
@@ -178,7 +179,7 @@ export default {
   created () {},
   mounted () {
     this.$nextTick(() => {
-      if (this.isFirstRouter) {
+      if (this.isFirstRouter) { // 如果是APP第一次加载页面则在界面resize后重加载betterscroll
         watchResize(this.loadTitleScroll);
       }
     });

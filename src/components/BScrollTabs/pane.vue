@@ -22,7 +22,7 @@ export default {
     };
   },
   methods: {
-    updateNav () {
+    updateNav () { // pane数据变更后重加在父级tabs的updateNav方法navList
       this.$parent.updateNav();
     }
   },

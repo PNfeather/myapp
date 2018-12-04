@@ -6,6 +6,8 @@
   </main>
 </template>
 
+<!--这是一个集成了betterScroll的主体组件-->
+
 <script>
   import BScroll from 'better-scroll';
   import {watchResize} from '@/tools/common';
@@ -13,35 +15,35 @@
   export default {
     name: 'app-main',
     props: {
-      probeType: {
+      probeType: { // betterscroll 是否触发滚动事件参数
         type: Number,
         default: 3
       },
-      canClick: {
+      canClick: { // betterscroll 是否触发点击事件参数
         type: Boolean,
         default: true
       },
-      scrollX: {
+      scrollX: { // betterscroll X轴能否滚动
         type: Boolean,
         default: false
       }
     },
     data () {
       return {
-        main: ''
+        main: '' // BScroll
       };
     },
     computed: {
       ...mapState(['isFirstRouter'])
     },
     methods: {
-      initScroll () {
+      initScroll () { // 初始化betterScroll
         this.main = new BScroll(this.$refs.main, {
           click: this.canClick,
           scrollX: this.scrollX,
           probeType: this.probeType
         });
-        if (this.isFirstRouter) {
+        if (this.isFirstRouter) { // 如果为app加载的第一个页面则待页面resize后重加载betterscroll
           watchResize(this.scrollRefresh);
         }
         this.computedNeedRefresh();
@@ -65,7 +67,7 @@
       });
     },
     watch: {
-      main () {
+      main () { // main定义变化则将改实例传出，并将改实例对应的Bscroll实例名称传出
         this.$emit('input', {instance: this, BScrollName: 'main'});
       }
     }

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import {endDragMove} from './methods';
 
-Vue.directive('dragElement', {
+Vue.directive('dragElement', { // 元素拖拽指令
   bind: function (el) {
     let startX;
     let startY;

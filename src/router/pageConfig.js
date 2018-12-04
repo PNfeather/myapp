@@ -1,9 +1,14 @@
 const config = [
   // 指令测试页
-  {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage'},
-  {path: '/test1', name: 'test1', filePath: '/test1'},
-  {path: '/test2', name: 'test2', filePath: '/test2', meta: {pageMark: 'page2'}},
-  {path: '/test3', name: 'test3', filePath: '/test3', meta: {pageMark: 'page3'}},
+  {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage', meta: {pageMark: '标记1'}},
+  // tabs测试页
+  {path: '/tabsTestPage', name: 'tabsTestPage', filePath: '/tabsTestPage', meta: {pageMark: '标记2'}},
+  // tabs点击切换测试页面
+  {path: '/clickTabsTestPages', name: 'clickTabsTestPages', filePath: '/clickTabsTestPages'},
+  // 集成Bscroll的tabs组件测试页
+  {path: '/BscrollTabsTestPage', name: 'BscrollTabsTestPage', filePath: '/BscrollTabsTestPage'},
+  // dom测试页
+  {path: '/testDom', name: 'testDom', filePath: '/testDom'},
   // 丢失页
   {path: '/unfind', name: 'unfind', filePath: '/unfind'}
 ];

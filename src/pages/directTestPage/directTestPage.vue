@@ -10,7 +10,7 @@
       <section>
         <div class="title">长按指令测试区域:</div>
         <div class="btn" v-longTouch="longTouchContentShow">长按显示隐藏内容</div>
-        <div class="text bgYellow" v-show="longTouchContentToggle">长按显示的</div>
+        <div class="text bgYellow" @click="longTouchContentToggle = false" v-show="longTouchContentToggle">长按显示的</div>
       </section>
       <section>
         <div class="title">时间指令测试区域:</div>
@@ -36,7 +36,7 @@
         </div>
       </section>
     </app-main>
-    <div class="dragElement" v-dragElement @click="clickDragEl">这是拖拽测试元素</div>
+    <div class="dragElement" v-dragElement @click="clickDragEl">这是拖拽指令测试元素</div>
   </app-page>
 </template>
 

@@ -26,6 +26,12 @@ export const rightBtnConfig = [
     }
   },
   {
+    'text': '设计模式',
+    'fun': () => {
+      router.push({'path': '/designMode'});
+    }
+  },
+  {
     'text': 'dom测试页',
     'fun': () => {
       router.push({'path': '/testDom'});

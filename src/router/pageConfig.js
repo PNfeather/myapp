@@ -7,6 +7,8 @@ const config = [
   {path: '/clickTabsTestPages', name: 'clickTabsTestPages', filePath: '/clickTabsTestPages'},
   // 集成Bscroll的tabs组件测试页
   {path: '/BscrollTabsTestPage', name: 'BscrollTabsTestPage', filePath: '/BscrollTabsTestPage'},
+  // 设计模式
+  {path: '/designMode', name: 'designMode', filePath: '/designMode'},
   // dom测试页
   {path: '/testDom', name: 'testDom', filePath: '/testDom'},
   // 丢失页

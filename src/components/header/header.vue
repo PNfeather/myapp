@@ -1,5 +1,5 @@
 <template>
-  <mt-header class="app-mint-header" :title="title" fixed>
+  <mt-header class="app-mint-header" :class="{'borderNone': borderNone}" :title="title" fixed>
     <div slot="left" v-if="needBack">
       <div class="backBtn" @click="back">
         <span class="backIcon"></span>返回
@@ -41,6 +41,10 @@ export default {
     backNum: { // 往前返回指定页数
       type: Number,
       default: 1
+    },
+    borderNone: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -78,6 +82,9 @@ export default {
     &:after{
       .border-bottom();
     }
+  }
+  .borderNone:after{
+    display: none!important;
   }
   .backBtn{
     color: #5CD4FE;

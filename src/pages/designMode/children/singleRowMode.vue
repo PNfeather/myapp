@@ -1,5 +1,5 @@
 <template>
-    <div>内容</div>
+    <div>单列模式</div>
 </template>
 
 <script>
@@ -16,7 +16,4 @@
 </script>
 
 <style lang='less' scoped>
-    #single-row-mode{
-
-    }
 </style>

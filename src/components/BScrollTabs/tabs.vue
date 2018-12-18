@@ -194,8 +194,6 @@ export default {
     .tabs-bar{
       height: 1.6rem;
       width: 100%;
-      width: 100%;
-      height: 1.6rem;
       background: #f1f1f1;
       z-index: 1;
       overflow: hidden;

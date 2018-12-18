@@ -3,8 +3,8 @@
     <app-header :title="title"></app-header>
     <app-main v-model="scrollObj">
       <tabs v-model="activeKey">
-        <pane :label="`标签${item}`" :name="item" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :key="item">
-          标签{{item}}的内容
+        <pane :label="item.label" :name="item.name" v-for="item in modeList" :key="item.name">
+          <component :is="item.template"></component>
         </pane>
       </tabs>
     </app-main>
@@ -14,17 +14,19 @@
 <script>
   import tabs from '@/components/clickTabs/tabs.vue';
   import pane from '@/components/clickTabs/pane.vue';
+  import singleRowMode from './children/singleRowMode';
   export default {
     name: 'design-mode',
-    props: {
-      key: {
-        type: String,
-        default: ''
-      }
-    },
     data () {
       return {
         title: '设计模式',
+        modeList: [
+          {
+            name: 1,
+            label: '单列模式',
+            template: singleRowMode
+          }
+        ],
         activeKey: 1,
         scrollObj: ''
       };

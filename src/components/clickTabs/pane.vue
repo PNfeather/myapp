@@ -9,7 +9,7 @@ export default {
   name: 'pane',
   props: {
     name: {
-      type: String
+      type: [String, Number]
     },
     label: {
       type: String,

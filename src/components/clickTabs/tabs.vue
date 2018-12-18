@@ -156,7 +156,7 @@ export default {
             max-width: 4rem;
             height: 1.6rem;
             display: inline-block;
-            padding: .2rem .8rem;
+            padding: .2rem 0;
             text-align: center;
             overflow: hidden;
             white-space: nowrap;

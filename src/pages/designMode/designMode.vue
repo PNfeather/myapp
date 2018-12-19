@@ -21,7 +21,7 @@
       return {
         title: '设计模式',
         modeList: [...config],
-        activeKey: 1,
+        activeKey: 2,
         scrollObj: ''
       };
     },

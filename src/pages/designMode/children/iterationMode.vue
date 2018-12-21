@@ -1,5 +1,7 @@
 <template>
-  <div>迭代器模式</div>
+  <div class="mode">
+    <div class="subTitle">迭代器模式</div>
+  </div>
 </template>
 
 <script>
@@ -16,4 +18,11 @@
 </script>
 
 <style lang='less' scoped>
+  @import '~@/style/common.less';
+  .subTitle{
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: .85rem;
+    margin-top: -.7rem;
+  }
 </style>

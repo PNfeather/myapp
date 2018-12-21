@@ -32,7 +32,7 @@
   import Move from '../common/tacticsMode';
   import Validator from '../common/tacticsMode2';
   export default {
-    name: 'template-mode',
+    name: 'tactics-mode',
     data () {
       return {
         userName: '',

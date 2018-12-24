@@ -144,6 +144,39 @@ let watchResize = function (callBack) {
   document.addEventListener('DOMContentLoaded', reSize, false);
 };
 
-export default {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent, watchResize};
+function isArrayLike (o) {
+ if (o && // o不是null、undefined等
+    typeof o === 'object' && // o是对象
+    isFinite(o.length) && // o.length是有限数值
+    o.length >= 0 && // o.length为非负值
+    o.length === Math.floor(o.length) && // o.length是整数
+    o.length < 4294967296) { // o.length < 2^32
+    return true;
+  } else {
+    return false;
+  }
+}
 
-export {commonTime, addFunToOldFun, getCss, EventUtil, delArrEl, scrollTo, addLoadEvent, watchResize};
+export default {
+  commonTime,
+  addFunToOldFun,
+  getCss,
+  EventUtil,
+  delArrEl,
+  scrollTo,
+  addLoadEvent,
+  watchResize,
+  isArrayLike
+};
+
+export {
+  commonTime,
+  addFunToOldFun,
+  getCss,
+  EventUtil,
+  delArrEl,
+  scrollTo,
+  addLoadEvent,
+  watchResize,
+  isArrayLike
+};

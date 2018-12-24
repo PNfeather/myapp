@@ -21,7 +21,7 @@
       return {
         title: '设计模式',
         modeList: [...config],
-        activeKey: 4,
+        activeKey: 1,
         scrollObj: ''
       };
     },
@@ -31,7 +31,11 @@
       pane
     },
     created () {},
-    mounted () {}
+    mounted () {
+      this.$nextTick(() => {
+        this.activeKey = 4;
+      });
+    }
   };
 </script>
 

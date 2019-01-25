@@ -21,8 +21,9 @@ let elMove = function (el, attr, targetLt) {
 
 // 拖拽事件结束方法
 let endDragMove = function (el) { // 距离上或下最小时满足距离小于50px才移动，否则左右取最小值移动
-  let pageWidth = document.documentElement.clientWidth;
-  let pageHeight = document.documentElement.clientHeight; // 限制区域宽高
+  let parent = el.parentNode;
+  let pageWidth = parent.clientWidth;
+  let pageHeight = parent.clientHeight; // 限制区域宽高
   let toTop = el.offsetTop;
   let toLeft = el.offsetLeft; // 距离限制区域上左距离
   let elWidth = el.offsetWidth;

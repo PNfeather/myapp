@@ -2,11 +2,12 @@ import Vue from 'vue';
 import {endDragMove} from './methods';
 
 Vue.directive('dragElement', { // 元素拖拽指令
-  bind: function (el) {
+  inserted: function (el) {
     let startX;
     let startY;
-    let pageWidth = document.documentElement.clientWidth;
-    let pageHeight = document.documentElement.clientHeight;
+    let parent = el.parentNode;
+    let pageWidth = parent.clientWidth;
+    let pageHeight = parent.clientHeight;
     el.addEventListener('touchstart', (event) => {
       if (el.__VueDragTimer__) clearInterval(el.__VueDragTimer__);
       let touch = event.touches[0];

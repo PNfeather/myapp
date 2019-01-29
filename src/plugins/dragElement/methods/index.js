@@ -37,8 +37,8 @@ let endDragMove = function (el) { // 距离上或下最小时满足距离小于5
     }, { // 下移贴边对象
       moveType: 'top',
       targetLocation: pageHeight - elHeight,
-      value: pageHeight - toTop - elWidth,
-      toggle: pageHeight - toTop - elWidth <= 50
+      value: pageHeight - toTop - elHeight,
+      toggle: pageHeight - toTop - elHeight <= 50
     }, { // 左移贴边对象
       moveType: 'left',
       targetLocation: 0,

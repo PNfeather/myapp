@@ -1,7 +1,7 @@
 <template>
   <div class="mode">
     <div class="subTitle">迭代器模式</div>
-    <p>目前前端语言多自带迭代器:</p>
+    <p>目前前端框架多自带迭代器:</p>
     <p>以下通过js写一个对象数组公用迭代器:</p>
     <p>对象迭代：{{obj}}</p>
     <p>迭代后：{{objResult}}</p>

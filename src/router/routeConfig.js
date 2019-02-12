@@ -1,4 +1,5 @@
 const config = [
+{path: '/inputUserName', name: 'inputUserName', meta: {}, component: () => import(/* webpackChunkName: "inputUserName")} */ '@/pages/inputUserName/inputUserName.vue')},
 {path: '/directTestPage', name: 'directTestPage', meta: {'pageMark': '标记1'}, component: () => import(/* webpackChunkName: "directTestPage")} */ '@/pages/directTestPage/directTestPage.vue')},
 {path: '/tabsTestPage', name: 'tabsTestPage', meta: {'pageMark': '标记2'}, component: () => import(/* webpackChunkName: "tabsTestPage")} */ '@/pages/tabsTestPage/tabsTestPage.vue')},
 {path: '/clickTabsTestPages', name: 'clickTabsTestPages', meta: {}, component: () => import(/* webpackChunkName: "clickTabsTestPages")} */ '@/pages/clickTabsTestPages/clickTabsTestPages.vue')},

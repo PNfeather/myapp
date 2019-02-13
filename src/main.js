@@ -16,6 +16,7 @@ import Main from '@/components/main/main';
 import {
   Header, Button, Popup, Swipe, SwipeItem, Tabbar, TabItem, MessageBox, Toast, InfiniteScroll, Spinner, Loadmore, Picker, Indicator, DatetimePicker, TabContainer, TabContainerItem, CellSwipe, Switch, Lazyload
 } from 'mint-ui';
+process.env.MOCK && require('@/mock');
 
 // mint-ui组件引入
 Vue.component(Header.name, Header);

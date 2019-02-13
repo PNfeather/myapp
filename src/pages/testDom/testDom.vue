@@ -22,7 +22,11 @@
       components: {
         pagingUpload
       },
-      created () {},
+      created () {
+        this.$http.get('/test').then((res) => {
+          console.log(res.data);
+        });
+      },
       mounted () {}
     };
 </script>

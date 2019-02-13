@@ -24,7 +24,10 @@
       },
       created () {
         this.$http.get('/test').then((res) => {
-          console.log(res.data);
+          console.log(res);
+        });
+        this.$http.get('/test').then((res) => {
+          console.log(res);
         });
       },
       mounted () {}

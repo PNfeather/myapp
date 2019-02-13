@@ -1,7 +1,9 @@
 
 const Mock = require('mockjs');
 
-Mock.mock('/test', 'get', {
+let beseUrl = window.location.origin + '/apis';
+
+Mock.mock(beseUrl + '/test', 'get', {
   'resultCode': '000000',
   'resultData': {
     'text': '这是一个mock测试数据'

@@ -48,7 +48,7 @@ axios.interceptors.response.use(response => {
   removePending(response.config); // 在一个ajax响应后再执行一下取消操作，把已经完成的请求从pending中移除
   return response;
 }, error => {
-  console.warn(error + '重复请求');
+  console.warn(error);
 });
 
 export default {

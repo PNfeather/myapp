@@ -1,6 +1,8 @@
 const config = [
   // 用户名输入页
   {path: '/inputUserName', name: 'inputUserName', filePath: '/inputUserName'},
+  // 模拟测试页
+  {path: '/exam', name: 'exam', filePath: '/exam'},
   // 指令测试页
   {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage', meta: {pageMark: '标记1'}},
   // tabs测试页

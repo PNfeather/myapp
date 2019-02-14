@@ -6,11 +6,21 @@
       </div>
     </app-header>
     <app-main>
-      <section class="noName" v-if="userName === ''" @click="goInputUserName">
-        <div>当前无用户名，点击跳转输入用户名</div>
+      <section class="noName" v-if="userName === ''">
+        <div class="list">
+          <div class="item" @click="goInputUserName">
+            <p>当前无用户名，点击跳转输入用户名</p>
+            <span class="rightIcon"></span>
+          </div>
+        </div>
       </section>
-      <section class="goExam" v-if="userName !== ''" @click="goExam">
-        <div>点击进入模拟考试</div>
+      <section class="goExam" v-if="userName !== ''">
+        <div class="list">
+          <div class="item" @click="goExam">
+            <p>点击进入模拟考试</p>
+            <span class="rightIcon"></span>
+          </div>
+        </div>
       </section>
     </app-main>
     <right-popup :popupToggle="showJumpPopup" :popupList="jumpPopupList"></right-popup>
@@ -65,9 +75,29 @@
     font-size: 1rem;
   }
   .noName, .goExam{
-    font-size: .8rem;
-    line-height: 2rem;
-    text-decoration: underline;
-    color: #999;
+    .list{
+      margin-top: .5rem;
+      background: #fff;
+      .item{
+        font-size: .8rem;
+        line-height: 2rem;
+        color: #999;
+        padding: 0 .4rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        p{
+          flex: 1;
+        }
+        .rightIcon{
+          display: inline-block;
+          width: .4rem;
+          height: .4rem;
+          border-right: 2px solid #999999;
+          border-top: 2px solid #999999;
+          transform: rotate(45deg);
+        }
+      }
+    }
   }
 </style>

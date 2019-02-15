@@ -5,10 +5,13 @@ let beseUrl = window.location.origin + '/apis';
 const Random = Mock.Random; // Mock.Random 是一个工具类，用于生成各种随机数据
 
 let data = []; // 用于接受生成数据的数组
-let dataNum = Random.integer(16, 50);
+let dataNum = Random.integer(8, 30);
 for (let i = 0; i < dataNum; i++) { // 可自定义生成的个数
+  let id = Random.id();
   let template = {
-    'text': Random.city() + (i + 1)
+    'name': Random.cname(),
+    'id': id.substring(0, 4) + '******' + id.substr(14),
+    'email': Random.email()
   };
   data.push(template);
 }

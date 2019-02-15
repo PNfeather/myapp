@@ -10,7 +10,6 @@
         <div class="list">
           <div class="item" @click="goInputUserName">
             <p>当前无用户名，点击跳转输入用户名</p>
-            <span class="rightIcon"></span>
           </div>
         </div>
       </section>
@@ -18,7 +17,9 @@
         <div class="list">
           <div class="item" @click="goExam">
             <p>点击进入模拟考试</p>
-            <span class="rightIcon"></span>
+          </div>
+          <div class="item" @click="goScrollTest">
+            <p>点击进入模拟分页加载数据页</p>
           </div>
         </div>
       </section>
@@ -62,6 +63,9 @@
       },
       goExam () {
         this.$router.push('exam');
+      },
+      goScrollTest () {
+        this.$router.push('scrollModel');
       }
     },
     components: {
@@ -79,23 +83,28 @@
       margin-top: .5rem;
       background: #fff;
       .item{
+        &:first-child{
+          border: none;
+        }
+        border-top: 1px solid #f1f1f1;
         font-size: .8rem;
         line-height: 2rem;
         color: #999;
-        padding: 0 .4rem;
+        padding: 0 0.8rem 0 .4rem;
         text-align: left;
         display: flex;
         align-items: center;
-        p{
-          flex: 1;
-        }
-        .rightIcon{
+        &:after{
+          content: '';
           display: inline-block;
           width: .4rem;
           height: .4rem;
           border-right: 2px solid #999999;
           border-top: 2px solid #999999;
           transform: rotate(45deg);
+        }
+        p{
+          flex: 1;
         }
       }
     }

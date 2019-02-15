@@ -1,5 +1,6 @@
 require('@/mock/test');
 require('@/mock/exam');
+require('@/mock/scrollTest');
 
 const Mock = require('mockjs');
 

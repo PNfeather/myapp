@@ -1,6 +1,7 @@
 const config = [
 {path: '/inputUserName', name: 'inputUserName', meta: {}, component: () => import(/* webpackChunkName: "inputUserName")} */ '@/pages/inputUserName/inputUserName.vue')},
 {path: '/exam', name: 'exam', meta: {}, component: () => import(/* webpackChunkName: "exam")} */ '@/pages/exam/exam.vue')},
+{path: '/scrollModel', name: 'scrollModel', meta: {}, component: () => import(/* webpackChunkName: "scrollModel")} */ '@/pages/scrollModel/scrollModel.vue')},
 {path: '/directTestPage', name: 'directTestPage', meta: {'pageMark': '标记1'}, component: () => import(/* webpackChunkName: "directTestPage")} */ '@/pages/directTestPage/directTestPage.vue')},
 {path: '/tabsTestPage', name: 'tabsTestPage', meta: {'pageMark': '标记2'}, component: () => import(/* webpackChunkName: "tabsTestPage")} */ '@/pages/tabsTestPage/tabsTestPage.vue')},
 {path: '/clickTabsTestPages', name: 'clickTabsTestPages', meta: {}, component: () => import(/* webpackChunkName: "clickTabsTestPages")} */ '@/pages/clickTabsTestPages/clickTabsTestPages.vue')},

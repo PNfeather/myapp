@@ -65,21 +65,22 @@
             !this.testeeAnswers[i] && noAnswerQuestion.push(this.questionList[i].index);
           }
           (noAnswerQuestion.length) && (msg = '第' + noAnswerQuestion.join('、') + '题未做答！确认交卷吗？');
-          return msg;
+          return {msg: msg, len: this.questionList.length - noAnswerQuestion.length};
         },
         next () {
           if (this.currentIndex !== this.questionList.length - 1) {
             this.currentIndex++;
           } else {
+            let answersResult = this.getSubmitText();
             this.$messagebox.confirm('', {
               title: '温馨提示',
-              message: this.getSubmitText(),
+              message: answersResult.msg,
               confirmButtonText: '交卷了',
               cancelButtonText: '再看看'
             }).then((res) => {
               console.log(res);
               this.showResult = true;
-              this.$http.post('/exam/result').then((res) => {
+              this.$http.post('/exam/result', {len: answersResult.len}).then((res) => {
                 let data = res.data;
                 if (data.resultCode === '000000') {
                   this.examResult = data.resultData;

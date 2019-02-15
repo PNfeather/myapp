@@ -18,21 +18,25 @@
           noMore: false
         };
       },
-      methods: {},
+      methods: {
+        test () {
+          this.$http.get('/test').then((res) => {
+            console.log(res);
+          });
+          this.$http.get('/test', {
+            data: {
+              test: 0
+            }
+          }).then((res) => {
+            console.log(res);
+          });
+        }
+      },
       components: {
         pagingUpload
       },
       created () {
-        this.$http.get('/test').then((res) => {
-          console.log(res);
-        });
-        this.$http.get('/test', {
-          data: {
-            test: 0
-          }
-        }).then((res) => {
-          console.log(res);
-        });
+        this.test();
       },
       mounted () {}
     };

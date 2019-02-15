@@ -1,25 +1,20 @@
 <template>
     <app-page id="test-dom">
         <app-header :title="title"></app-header>
-      <paging-upload class="scrollContent" :loading="loading" :noMore="noMore">
-        <div class="div" :key="item" v-for="item in [1, 2, 3, 4]">{{'内容' + item}}</div>
-      </paging-upload>
     </app-page>
 </template>
 
 <script>
-  import pagingUpload from '@/components/pagingUpload/pagingUpload.vue';
+
     export default {
       name: 'test-dom',
       data () {
         return {
-          title: 'testDom',
-          loading: false,
-          noMore: false
+          title: 'testDom'
         };
       },
       methods: {
-        test () {
+        test () { // 测试重复调接口会拦截
           this.$http.get('/test').then((res) => {
             console.log(res);
           });
@@ -32,9 +27,7 @@
           });
         }
       },
-      components: {
-        pagingUpload
-      },
+      components: {},
       created () {
         this.test();
       },
@@ -48,7 +41,13 @@
         position: absolute;
         top: 0;right: 0;left: 0;bottom: 0;
         .div{
-          height: 10rem;
+          &:first-child{
+            border: none!important;
+          }
+          border-top: 1px solid #f1f1f1;
+          height: 2.2rem;
+          line-height: 2.2rem;
+          background-color: #fff;
         }
       }
     }

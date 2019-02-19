@@ -5,6 +5,8 @@ const config = [
   {path: '/exam', name: 'exam', filePath: '/exam'},
   // 分页加载测试页
   {path: '/scrollModel', name: 'scrollModel', filePath: '/scrollModel'},
+  // 表单示例页
+  {path: '/echartsModel', name: 'echartsModel', filePath: '/echartsModel'},
   // 指令测试页
   {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage', meta: {pageMark: '标记1'}},
   // tabs测试页

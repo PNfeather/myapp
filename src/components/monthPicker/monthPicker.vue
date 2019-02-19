@@ -92,10 +92,8 @@
         },
         activeItem (item) { // 选择月自动左右滑动效果
           this.$nextTick(() => {
-            let width = this.$refs.monthPicker.clientWidth;
             let centerEl = this.$refs['month-' + item][0];
-            let itemWidth = centerEl.clientWidth;
-            this.monthPickerScroll.scrollToElement(centerEl, 300, -(width / 2 - itemWidth / 2), 0);
+            this.monthPickerScroll.scrollToElement(centerEl, 300, true, 0);
           });
         },
         pickerInit () { // 时间选择器初始化

@@ -7,7 +7,6 @@ const store = new Vuex.Store({
   state: {
     numA: 0,
     numB: 0,
-    userName: '',
     routerHistory: [], // 历史路由
     isFirstRouter: false // 页面是否是第一次加载项目页面
   },
@@ -17,9 +16,6 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    changeUserName (state, val) {
-      state.userName = val;
-    },
     changeNum (state, payload = {numType: 'numA', value: 0}) {
       state[payload.numType] += payload.value;
     },

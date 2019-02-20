@@ -3,6 +3,7 @@ import store from '@/store';
 import Router from 'vue-router';
 import routeConfig from './routeConfig';
 import IndexPage from '@/pages/index/index.vue';
+import storageStore from '@/tools/localStorage';
 
 Vue.use(Router);
 
@@ -33,7 +34,8 @@ router.beforeEach((to, from, next) => {
     store.dispatch('doPushRouterHistory', to.name);
   }
   if (to.meta.needLogin) {
-    if (!store.state.userName) {
+    let userName = storageStore.get.userName();
+    if (!userName) {
       router.push('inputUserName');
     }
   }

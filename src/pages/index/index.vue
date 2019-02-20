@@ -28,13 +28,16 @@
 <script>
   import rightPopup from '@/components/rightPopup/rightPopup.vue';
   import {rightBtnConfig} from './rightBtnConfig';
-  import {mapState} from 'vuex';
+  // import {mapState} from 'vuex';
+  import storageStore from '@/tools/localStorage';
   import _ from '@/plugins/lodash';
+  let userName = storageStore.get.userName();
   export default {
     name: 'firstPage',
     data () {
       return {
         title: '首页',
+        userName: userName,
         showJumpPopup: false,
         jumpPopupList: _.cloneDeep(rightBtnConfig),
         justForMe: false,
@@ -60,7 +63,6 @@
     mounted () {
     },
     computed: {
-      ...mapState(['userName'])
     },
     watch: {},
     methods: {

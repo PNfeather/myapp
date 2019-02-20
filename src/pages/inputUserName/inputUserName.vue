@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex';
   import Validator from '@/pages/designMode/common/tacticsMode2';
+  import storageStore from '@/tools/localStorage';
     export default {
       name: 'input-user-name',
       data () {
@@ -31,7 +31,6 @@
         };
       },
       methods: {
-        ...mapMutations(['changeUserName']),
         validate () {
           let validator = new Validator();
           validator.add(this.userName, [{
@@ -58,7 +57,7 @@
         },
         submit () {
           if (this.validate()) {
-            this.changeUserName(this.userName);
+            storageStore.set.userName(this.userName);
             this.$router.go(-1);
           }
         }

@@ -15,7 +15,7 @@
     name: 'hello',
     data () {
       return {
-        title: '表单示例页',
+        title: '时间组件合图表',
         pickerTime: ''
       };
     },

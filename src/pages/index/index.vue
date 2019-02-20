@@ -8,18 +8,15 @@
     <app-main>
       <section class="noName" v-if="userName === ''">
         <div class="list">
-          <div class="item" @click="goInputUserName">
+          <div class="item" @click="jumpTo('inputUserName')">
             <p>当前无用户名，点击跳转输入用户名</p>
           </div>
         </div>
       </section>
       <section class="goExam" v-if="userName !== ''">
         <div class="list">
-          <div class="item" @click="goExam">
-            <p>点击进入模拟考试</p>
-          </div>
-          <div class="item" @click="goScrollTest">
-            <p>点击进入模拟分页加载数据页</p>
+          <div class="item" @click="jumpTo(item.path)" v-for="(item, index) in indexConfig" :key="index">
+            <p>{{item.text}}</p>
           </div>
         </div>
       </section>
@@ -40,7 +37,19 @@
         title: '首页',
         showJumpPopup: false,
         jumpPopupList: _.cloneDeep(rightBtnConfig),
-        justForMe: false
+        justForMe: false,
+        indexConfig: [
+          {
+            text: '点击进入模拟考试',
+            path: 'exam'
+          }, {
+            text: '点击进入模拟分页加载数据页',
+            path: 'scrollModel'
+          }, {
+            text: '点击进入时间组件合图表页',
+            path: 'echartsModel'
+          }
+        ]
       };
     },
     created () {
@@ -58,14 +67,8 @@
       openJumpPopup () {
         this.showJumpPopup = !this.showJumpPopup;
       },
-      goInputUserName () {
-        this.$router.push('inputUserName');
-      },
-      goExam () {
-        this.$router.push('exam');
-      },
-      goScrollTest () {
-        this.$router.push('scrollModel');
+      jumpTo (path) {
+        this.$router.push(path);
       }
     },
     components: {

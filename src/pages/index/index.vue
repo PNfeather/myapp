@@ -19,6 +19,9 @@
             <p>{{item.text}}</p>
           </div>
         </div>
+        <div class="loginOut" @click="loginOut">
+          切换用户
+        </div>
       </section>
     </app-main>
     <right-popup :popupToggle="showJumpPopup" :popupList="jumpPopupList"></right-popup>
@@ -31,13 +34,12 @@
   // import {mapState} from 'vuex';
   import storageStore from '@/tools/localStorage';
   import _ from '@/plugins/lodash';
-  let userName = storageStore.get.userName();
   export default {
     name: 'firstPage',
     data () {
       return {
         title: '首页',
-        userName: userName,
+        userName: '',
         showJumpPopup: false,
         jumpPopupList: _.cloneDeep(rightBtnConfig),
         justForMe: false,
@@ -56,9 +58,7 @@
       };
     },
     created () {
-      if (this.userName === 'yuyuyu') {
-        this.justForMe = true;
-      }
+      this.pageInit();
     },
     mounted () {
     },
@@ -66,11 +66,21 @@
     },
     watch: {},
     methods: {
+      pageInit () {
+        this.userName = storageStore.get.userName();
+        if (this.userName === 'yuyuyu') {
+          this.justForMe = true;
+        }
+      },
       openJumpPopup () {
         this.showJumpPopup = !this.showJumpPopup;
       },
       jumpTo (path) {
         this.$router.push(path);
+      },
+      loginOut () {
+        storageStore.set.userName('');
+        this.$router.push('inputUserName');
       }
     },
     components: {
@@ -113,5 +123,17 @@
         }
       }
     }
+  }
+  .loginOut{
+    margin: 2rem auto;
+    height: 2rem;
+    font-size: .7rem;
+    width: 50%;
+    border-radius: 0.2rem;
+    background-color: aqua;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

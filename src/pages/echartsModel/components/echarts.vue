@@ -240,7 +240,7 @@
           });
         },
         changeBars (e) { // 改变柱方法
-          if (this.changeBarsToggle) {
+          if (this.changeBarsToggle && this.onlineData) {
             this.changeBarsToggle = false;
             let touchX = e.touches[0].pageX;
             this.onlineData.forEach((item, index) => {

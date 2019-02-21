@@ -9,6 +9,8 @@ const config = [
   {path: '/echartsModel', name: 'echartsModel', filePath: '/echartsModel'},
   // 各类图表展示页
   {path: '/multipleCharts', name: 'multipleCharts', filePath: '/multipleCharts'},
+  // mintUi页
+  {path: '/mintUi', name: 'mintUi', filePath: '/mintUi'},
   // 指令测试页
   {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage', meta: {pageMark: '标记1'}},
   // tabs测试页

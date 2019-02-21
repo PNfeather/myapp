@@ -4,6 +4,7 @@ const config = [
 {path: '/scrollModel', name: 'scrollModel', meta: {}, component: () => import(/* webpackChunkName: "scrollModel")} */ '@/pages/scrollModel/scrollModel.vue')},
 {path: '/echartsModel', name: 'echartsModel', meta: {}, component: () => import(/* webpackChunkName: "echartsModel")} */ '@/pages/echartsModel/echartsModel.vue')},
 {path: '/multipleCharts', name: 'multipleCharts', meta: {}, component: () => import(/* webpackChunkName: "multipleCharts")} */ '@/pages/multipleCharts/multipleCharts.vue')},
+{path: '/mintUi', name: 'mintUi', meta: {}, component: () => import(/* webpackChunkName: "mintUi")} */ '@/pages/mintUi/mintUi.vue')},
 {path: '/directTestPage', name: 'directTestPage', meta: {'pageMark': '标记1'}, component: () => import(/* webpackChunkName: "directTestPage")} */ '@/pages/directTestPage/directTestPage.vue')},
 {path: '/tabsTestPage', name: 'tabsTestPage', meta: {'pageMark': '标记2'}, component: () => import(/* webpackChunkName: "tabsTestPage")} */ '@/pages/tabsTestPage/tabsTestPage.vue')},
 {path: '/clickTabsTestPages', name: 'clickTabsTestPages', meta: {}, component: () => import(/* webpackChunkName: "clickTabsTestPages")} */ '@/pages/clickTabsTestPages/clickTabsTestPages.vue')},

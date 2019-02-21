@@ -56,6 +56,9 @@
           }, {
             text: '点击进入时间组件合图表页',
             path: 'echartsModel'
+          }, {
+            text: '点击进入mint-ui',
+            path: 'mintUi'
           }
         ]
       };

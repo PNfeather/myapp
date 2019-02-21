@@ -74,9 +74,6 @@
         this.$nextTick(() => {
           this.initChart(this.chartList[0]);
           this.isFirstLoad = false;
-          this.$nextTick(() => {
-            this.activeKey = 14;
-          });
         });
       },
       watch: {

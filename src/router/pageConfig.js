@@ -7,6 +7,8 @@ const config = [
   {path: '/scrollModel', name: 'scrollModel', filePath: '/scrollModel'},
   // 表单示例页
   {path: '/echartsModel', name: 'echartsModel', filePath: '/echartsModel'},
+  // 各类图表展示页
+  {path: '/multipleCharts', name: 'multipleCharts', filePath: '/multipleCharts'},
   // 指令测试页
   {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage', meta: {pageMark: '标记1'}},
   // tabs测试页

@@ -51,6 +51,9 @@
             text: '点击进入模拟分页加载数据页',
             path: 'scrollModel'
           }, {
+            text: '点击进入图表展示页',
+            path: 'multipleCharts'
+          }, {
             text: '点击进入时间组件合图表页',
             path: 'echartsModel'
           }

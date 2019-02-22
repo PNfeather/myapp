@@ -11,6 +11,8 @@ const config = [
   {path: '/multipleCharts', name: 'multipleCharts', filePath: '/multipleCharts'},
   // mintUi页
   {path: '/mintUi', name: 'mintUi', filePath: '/mintUi'},
+  // 地图示例页
+  {path: '/mapModel', name: 'mapModel', filePath: '/mapModel'},
   // 指令测试页
   {path: '/directTestPage', name: 'directTestPage', filePath: '/directTestPage', meta: {pageMark: '标记1'}},
   // tabs测试页

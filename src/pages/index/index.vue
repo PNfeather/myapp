@@ -59,6 +59,9 @@
           }, {
             text: '点击进入mint-ui',
             path: 'mintUi'
+          }, {
+            text: '点击进入地图示例页',
+            path: 'mapModel'
           }
         ]
       };

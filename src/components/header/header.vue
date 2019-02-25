@@ -87,12 +87,12 @@ export default {
     display: none!important;
   }
   .backBtn{
-    color: #5CD4FE;
+    color: #597ED9;
     .backIcon{
       display: inline-block;
       width: .7rem;height: .7rem;
-      border-top: 2px solid #5CD4FE;
-      border-left: 2px solid #5CD4FE;
+      border-top: 2px solid #597ED9;
+      border-left: 2px solid #597ED9;
       margin-left: .4rem;
       transform: rotate(-45deg);
     }

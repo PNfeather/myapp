@@ -180,7 +180,7 @@
 <style lang='less' scoped>
     [name="monthPicker"]{
       .nav{
-        background: aqua;
+        background: #597ED9;
         height: 2.2rem;
         line-height: 2.2rem;
         color: #333;
@@ -214,11 +214,11 @@
           height: 2.2rem;
           .shade{
             position: absolute;
-            left: 0;
+            left: -.1rem;
             top: 0;
             width: 1.4rem;
             height: 2.2rem;
-            background-image: linear-gradient(-90deg, rgba(94, 132, 229, 0) 0%, aqua 100%);
+            background-image: linear-gradient(-90deg, rgba(94, 132, 229, 0) 0%, #597ED9 100%);
           }
           ul{
             position: absolute;

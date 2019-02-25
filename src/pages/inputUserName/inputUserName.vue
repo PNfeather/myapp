@@ -99,7 +99,7 @@
         height: 2rem;
         width: 80%;
         border-radius: 0.2rem;
-        background-color: aqua;
+        background-color: #597ED9;
         border: 1px solid red;
         display: flex;
         justify-content: center;

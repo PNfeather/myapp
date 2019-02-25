@@ -227,7 +227,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 3rem;
-    background: #5CD4FE;
+    background: #597ED9;
     position: absolute;
     bottom: 0;
     right: 0;

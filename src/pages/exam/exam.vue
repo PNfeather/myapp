@@ -151,7 +151,7 @@
             margin-right: .4rem;
           }
           .active{
-            background: #5CD4FE;
+            background: #597ED9;
           }
         }
       }
@@ -169,7 +169,7 @@
           font-size: .7rem;
           width: 40%;
           border-radius: 0.2rem;
-          background-color: aqua;
+          background-color: #597ED9;
           border: 1px solid red;
           display: flex;
           justify-content: center;
@@ -189,7 +189,7 @@
           width: 40%;
           margin: 0 auto;
           border-radius: 0.2rem;
-          background-color: aqua;
+          background-color: #597ED9;
           border: 1px solid red;
           display: flex;
           justify-content: center;

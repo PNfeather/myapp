@@ -59,7 +59,7 @@
         height: 90%;
         width: 80%;
         border-radius: .2rem;
-        background-color: aqua;
+        background-color: #597ED9;
         border: 1px solid red;
         .flexCenter();
       }

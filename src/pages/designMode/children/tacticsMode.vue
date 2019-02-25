@@ -110,7 +110,7 @@
       height: 3rem;
       width: 3rem;
       border-radius: 3rem;
-      background-color: aqua;
+      background-color: #597ED9;
       .flexCenter();
       position: absolute;
       left: 0;
@@ -122,7 +122,7 @@
       top: 0;
       width: 2.2rem;
       height: 1.2rem;
-      background-color: aqua;
+      background-color: #597ED9;
       .flexCenter();
     }
   }
@@ -159,7 +159,7 @@
     width: 4rem;
     height: 1.4rem;
     border: 1px red solid;
-    background-color: aqua;
+    background-color: #597ED9;
     border-radius: .3rem;
     .flexCenter();
   }

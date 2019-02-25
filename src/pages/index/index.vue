@@ -99,7 +99,7 @@
 </script>
 <style scoped lang="less">
   .icon-tiaozhuan{
-    color: #5CD4FE;
+    color: #597ED9;
     font-size: 1rem;
   }
   .noName, .goExam{
@@ -139,7 +139,7 @@
     font-size: .7rem;
     width: 50%;
     border-radius: 0.2rem;
-    background-color: aqua;
+    background-color: #597ED9;
     border: 1px solid red;
     display: flex;
     justify-content: center;

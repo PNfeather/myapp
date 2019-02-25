@@ -20,13 +20,22 @@
       // 创建和初始化地图函数：
       initMap () {
         this.createMap();// 创建地图
-        this.setMapEvent();// 设置地图事件
-        this.mapControlDeal('addControl');// 向地图添加控件
+        this.setMapEvent(); // 设置地图事件
+        this.mapControlDeal('addControl'); // 向地图添加控件
       },
       createMap () {
+        this.map = new BMap.Map('baidu-map', {minZoom: 5, maxZoom: 18});
+        this.map.centerAndZoom(new BMap.Point(114.02597366, 22.54605355), 14);
+        this.$nextTick(() => {
+          this.getNowLocation();
+        });
+      },
+      getNowLocation () {
         /* eslint-disable */
+
         let geolocation = new BMap.Geolocation();
-        return geolocation.getCurrentPosition((r) => {
+        geolocation.enableSDKLocation();
+        geolocation.getCurrentPosition((r) => {
           if (geolocation.getStatus() == BMAP_STATUS_SUCCESS) {
             let mk = new BMap.Marker(r.point);
             this.map.addOverlay(mk);
@@ -35,16 +44,10 @@
             this.setLocation(r.point);
             return Promise.resolve(r.point);
           } else {
-            return Promise.resolve(false);
             console.log('无法定位到您的当前位置，导航失败，请手动输入您的当前位置！' + this.getStatus());
+            return Promise.resolve(false);
           }
         }, {enableHighAccuracy: true});
-        // this.getPosition().then((position) => {
-          this.map = new BMap.Map('baidu-map', {minZoom: 8, maxZoom: 14});
-          this.map.centerAndZoom(new BMap.Point(0, 0), 11);
-        // });
-      },
-      getPosition () { // 获取当前地理坐标
       },
       setLocation (point) { // 根据坐标获取地理位置名称
         let geoc = new BMap.Geocoder();
@@ -53,11 +56,6 @@
           let result = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
           console.log('当前的位置为:' + result);
         });
-      },
-      moveMap () { // 两秒后移动到广州
-        setTimeout(() => {
-          this.map.panTo(new BMap.Point(113.262232, 23.154345));
-        }, 2000);
       },
       setMapEvent () {
         this.$nextTick(() => {
@@ -75,7 +73,10 @@
 
         /*缩放控件type有四种类型:
           BMAP_NAVIGATION_CONTROL_SMALL：仅包含平移和缩放按钮；BMAP_NAVIGATION_CONTROL_PAN:仅包含平移按钮；BMAP_NAVIGATION_CONTROL_ZOOM：仅包含缩放按钮*/
-        let top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+        let top_right_navigation = new BMap.NavigationControl({
+          anchor: BMAP_ANCHOR_TOP_RIGHT,
+          type: BMAP_NAVIGATION_CONTROL_SMALL
+        }); //右上角，仅包含平移和缩放按钮
 
         this.map[method](top_left_navigation);
         this.map[method](top_right_navigation);

@@ -24,8 +24,35 @@
         this.mapControlDeal('addControl');// 向地图添加控件
       },
       createMap () {
-        this.map = new BMap.Map('baidu-map', {minZoom: 8, maxZoom: 14});
-        this.map.centerAndZoom(new BMap.Point(116.4035, 39.915), 11);
+        /* eslint-disable */
+        let geolocation = new BMap.Geolocation();
+        return geolocation.getCurrentPosition((r) => {
+          if (geolocation.getStatus() == BMAP_STATUS_SUCCESS) {
+            let mk = new BMap.Marker(r.point);
+            this.map.addOverlay(mk);
+            this.map.panTo(r.point);
+            console.log('当前位置经度为:' + r.point.lng + '纬度为:' + r.point.lat);
+            this.setLocation(r.point);
+            return Promise.resolve(r.point);
+          } else {
+            return Promise.resolve(false);
+            console.log('无法定位到您的当前位置，导航失败，请手动输入您的当前位置！' + this.getStatus());
+          }
+        }, {enableHighAccuracy: true});
+        // this.getPosition().then((position) => {
+          this.map = new BMap.Map('baidu-map', {minZoom: 8, maxZoom: 14});
+          this.map.centerAndZoom(new BMap.Point(0, 0), 11);
+        // });
+      },
+      getPosition () { // 获取当前地理坐标
+      },
+      setLocation (point) { // 根据坐标获取地理位置名称
+        let geoc = new BMap.Geocoder();
+        geoc.getLocation(point, function (rs) {
+          let addComp = rs.addressComponents;
+          let result = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+          console.log('当前的位置为:' + result);
+        });
       },
       moveMap () { // 两秒后移动到广州
         setTimeout(() => {

@@ -1,5 +1,6 @@
 const config = [
 {path: '/inputUserName', name: 'inputUserName', meta: {}, component: () => import(/* webpackChunkName: "inputUserName")} */ '@/pages/inputUserName/inputUserName.vue')},
+{path: '/user', name: 'user', meta: {}, component: () => import(/* webpackChunkName: "user")} */ '@/pages/user/user.vue')},
 {path: '/exam', name: 'exam', meta: {}, component: () => import(/* webpackChunkName: "exam")} */ '@/pages/exam/exam.vue')},
 {path: '/scrollModel', name: 'scrollModel', meta: {}, component: () => import(/* webpackChunkName: "scrollModel")} */ '@/pages/scrollModel/scrollModel.vue')},
 {path: '/echartsModel', name: 'echartsModel', meta: {}, component: () => import(/* webpackChunkName: "echartsModel")} */ '@/pages/echartsModel/echartsModel.vue')},

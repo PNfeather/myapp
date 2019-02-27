@@ -1,6 +1,8 @@
 const config = [
   // 用户名输入页
   {path: '/inputUserName', name: 'inputUserName', filePath: '/inputUserName'},
+  // 我的
+  {path: '/user', name: 'user', filePath: '/user'},
   // 模拟测试页
   {path: '/exam', name: 'exam', filePath: '/exam'},
   // 分页加载测试页

@@ -24,12 +24,14 @@
         </div>
       </section>
     </app-main>
+    <app-footer></app-footer>
     <right-popup :popupToggle="showJumpPopup" :popupList="jumpPopupList"></right-popup>
   </app-page>
 </template>
 
 <script>
   import rightPopup from '@/components/rightPopup/rightPopup.vue';
+  import appFooter from '@/components/footer/footer.vue';
   import {rightBtnConfig} from './rightBtnConfig';
   // import {mapState} from 'vuex';
   import storageStore from '@/tools/localStorage';
@@ -45,6 +47,9 @@
         justForMe: false,
         indexConfig: [
           {
+            text: '点击进入mint-ui',
+            path: 'mintUi'
+          }, {
             text: '点击进入模拟考试',
             path: 'exam'
           }, {
@@ -56,9 +61,6 @@
           }, {
             text: '点击进入时间组件合图表页',
             path: 'echartsModel'
-          }, {
-            text: '点击进入mint-ui',
-            path: 'mintUi'
           }, {
             text: '点击进入地图示例页',
             path: 'mapModel'
@@ -93,7 +95,8 @@
       }
     },
     components: {
-      rightPopup
+      rightPopup,
+      appFooter
     }
   };
 </script>

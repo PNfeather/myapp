@@ -64,6 +64,9 @@
           }, {
             text: '点击进入地图示例页',
             path: 'mapModel'
+          }, {
+            text: '点击进入上传图片示例页',
+            path: 'uploadImgModel'
           }
         ]
       };

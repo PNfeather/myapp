@@ -5,6 +5,8 @@ const config = [
   {path: '/user', name: 'user', filePath: '/user'},
   // 模拟测试页
   {path: '/exam', name: 'exam', filePath: '/exam'},
+  // 上传图片示例页
+  {path: '/uploadImgModel', name: 'uploadImgModel', filePath: '/uploadImgModel'},
   // 分页加载测试页
   {path: '/scrollModel', name: 'scrollModel', filePath: '/scrollModel'},
   // 表单示例页

@@ -1,6 +1,7 @@
 <template>
   <section ref="wrapper">
     <div class="scrollWrapper">
+      <section class="reloadingWaring" v-show="!reloading">松开刷新</section>
       <section class="tipsContent" v-show="reloading">
         <div class="reloading">
           <mt-spinner class="loadingIcon" type="snake"></mt-spinner>
@@ -194,9 +195,18 @@
   .tipsContent{
     margin: .5rem auto;
   }
-    .getMore,.loading,.noMoreContent,.reloading{
-      color: #999;
-    }
+  .getMore,.loading,.noMoreContent,.reloading,.reloadingWaring{
+    color: #999;
+  }
+  .reloadingWaring{
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: -2.2rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+  }
   .loadingIcon{
     display: flex;
     justify-content: center;

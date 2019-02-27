@@ -67,7 +67,7 @@
           margin: .2rem 0;
         }
         .text{
-          font-size: .6rem;
+          font-size: .7rem;
         }
         .active{
           color: #597ED9;

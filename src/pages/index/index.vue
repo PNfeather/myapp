@@ -47,7 +47,7 @@
         justForMe: false,
         indexConfig: [
           {
-            text: '点击进入mint-ui',
+            text: '点击进入mint-ui轮播',
             path: 'mintUi'
           }, {
             text: '点击进入模拟考试',

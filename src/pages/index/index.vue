@@ -2,7 +2,7 @@
   <app-page>
     <app-header :title="title" :needBack="false">
       <div slot="header-right" @click="openJumpPopup" v-if="justForMe">
-        <i class="iconfont icon-tiaozhuan"></i>
+        <i class="iconfont icon-jumpTo"></i>
       </div>
     </app-header>
     <app-main>
@@ -104,7 +104,7 @@
   };
 </script>
 <style scoped lang="less">
-  .icon-tiaozhuan{
+  .icon-jumpTo{
     color: #597ED9;
     font-size: 1rem;
   }

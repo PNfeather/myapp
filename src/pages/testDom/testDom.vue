@@ -1,10 +1,16 @@
 <template>
     <app-page id="test-dom">
-        <app-header :title="title"></app-header>
+      <app-header :title="title"></app-header>
+      <popupOne></popupOne>
+      <popupTwo></popupTwo>
+      <popupThree></popupThree>
     </app-page>
 </template>
 
 <script>
+  import popupOne from './compunents/popupOne';
+  import popupTwo from './compunents/popupTwo';
+  import popupThree from './compunents/popupThree';
     export default {
       name: 'test-dom',
       data () {
@@ -27,9 +33,12 @@
         }
       },
       components: {
+        popupOne,
+        popupTwo,
+        popupThree
       },
       created () {
-        this.test();
+        // this.test();
       },
       mounted () {
       }

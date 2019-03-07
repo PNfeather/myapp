@@ -23,6 +23,9 @@ const store = new Vuex.Store({
     shiftTestPagePopup (state) {
       state.testPagePopup.shift();
     },
+    clearTestPagePopup (state) {
+      state.testPagePopup = [];
+    },
     changeNum (state, payload = {numType: 'numA', value: 0}) {
       state[payload.numType] += payload.value;
     },

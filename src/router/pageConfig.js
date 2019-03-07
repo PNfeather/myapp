@@ -3,6 +3,8 @@ const config = [
   {path: '/inputUserName', name: 'inputUserName', filePath: '/inputUserName'},
   // 我的
   {path: '/user', name: 'user', filePath: '/user'},
+  // 队列弹框示例
+  {path: '/popupQueue', name: 'popupQueue', filePath: '/popupQueue'},
   // 模拟测试页
   {path: '/exam', name: 'exam', filePath: '/exam'},
   // 上传图片示例页

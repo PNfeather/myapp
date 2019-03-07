@@ -8,6 +8,7 @@
 </template>
 
 <script>
+  import {mapMutations} from 'vuex';
   import popupOne from './compunents/popupOne';
   import popupTwo from './compunents/popupTwo';
   import popupThree from './compunents/popupThree';
@@ -19,6 +20,7 @@
         };
       },
       methods: {
+        ...mapMutations(['clearTestPagePopup']),
         test () { // 测试重复调接口会拦截
           this.$http.get('/test').then((res) => {
             console.log(res);
@@ -31,6 +33,10 @@
             console.log(res);
           });
         }
+      },
+      beforeRouteLeave (to, from, next) {
+        this.clearTestPagePopup();
+        next();
       },
       components: {
         popupOne,

@@ -20,5 +20,8 @@ export const indexJumpConfig = [
   }, {
     text: '点击进入上传图片示例页',
     path: 'uploadImgModel'
+  }, {
+    text: '点击进入队列弹框示例',
+    path: 'popupQueue'
   }
 ];

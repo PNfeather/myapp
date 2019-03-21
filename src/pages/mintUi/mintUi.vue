@@ -3,7 +3,7 @@
         <app-header :title="title"></app-header>
         <app-main v-model="scrollObj">
           <section class="banner">
-            <mt-swipe :auto="3000" :speed="1000">
+            <mt-swipe :auto="0">
               <mt-swipe-item v-for="item in list" :key="item.id">
                 <img class="fullImg" :src="item.src" alt="">
               </mt-swipe-item>

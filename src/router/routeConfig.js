@@ -2,7 +2,6 @@ const config = [
 {path: '/inputUserName', name: 'inputUserName', meta: {}, component: () => import(/* webpackChunkName: "inputUserName")} */ '@/pages/inputUserName/inputUserName.vue')},
 {path: '/user', name: 'user', meta: {}, component: () => import(/* webpackChunkName: "user")} */ '@/pages/user/user.vue')},
 {path: '/popupQueue', name: 'popupQueue', meta: {}, component: () => import(/* webpackChunkName: "popupQueue")} */ '@/pages/popupQueue/popupQueue.vue')},
-{path: '/popupQueue2', name: 'popupQueue2', meta: {}, component: () => import(/* webpackChunkName: "popupQueue2")} */ '@/pages/popupQueue2/popupQueue2.vue')},
 {path: '/exam', name: 'exam', meta: {}, component: () => import(/* webpackChunkName: "exam")} */ '@/pages/exam/exam.vue')},
 {path: '/uploadImgModel', name: 'uploadImgModel', meta: {}, component: () => import(/* webpackChunkName: "uploadImgModel")} */ '@/pages/uploadImgModel/uploadImgModel.vue')},
 {path: '/scrollModel', name: 'scrollModel', meta: {}, component: () => import(/* webpackChunkName: "scrollModel")} */ '@/pages/scrollModel/scrollModel.vue')},

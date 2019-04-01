@@ -5,6 +5,8 @@ const config = [
   {path: '/user', name: 'user', filePath: '/user'},
   // 队列弹框示例
   {path: '/popupQueue', name: 'popupQueue', filePath: '/popupQueue'},
+  // 队列弹框示例2
+  {path: '/popupQueue2', name: 'popupQueue2', filePath: '/popupQueue2'},
   // 模拟测试页
   {path: '/exam', name: 'exam', filePath: '/exam'},
   // 上传图片示例页

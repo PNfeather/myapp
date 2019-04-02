@@ -33,11 +33,9 @@ const popupMixins = {
   watch: {
     testPagePopup: {
       handler (val) {
-        // console.log(val);
         if (val.length) {
           let first = val[0];
-          let currentVueName = this.$options.name;
-          if (first.vueName === currentVueName) {
+          if (first.vueName === this.$options.name) {
             this[first.toggleName] = true;
           }
         }

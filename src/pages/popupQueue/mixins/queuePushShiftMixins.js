@@ -1,6 +1,6 @@
 import _ from '@/plugins/lodash';
 import {needPopupQueuePage} from './needPopupQueuePage';
-import {getPopupQueue} from './getPopupQueue';
+import {getpopupQueueArray} from './getPopupQueue';
 
 const queuePushShiftMixins = {
   data () {
@@ -12,7 +12,7 @@ const queuePushShiftMixins = {
   methods: {
     commonPushPopupQueueArray (toggleName) {
       if (this.isPopupQueuePage) {
-        getPopupQueue(this).push(() => {
+        getpopupQueueArray(this).push(() => {
           this[toggleName] = true;
         });
         this.popupQueueToggleNameArray.push(toggleName);
@@ -38,7 +38,7 @@ const queuePushShiftMixins = {
         if (this.isPopupQueuePage) {
           _.forEach(val, (value, key) => {
             if (!value && oldVal[key]) {
-              getPopupQueue(this).shift();
+              getpopupQueueArray(this).shift();
             }
           });
         }

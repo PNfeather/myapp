@@ -36,7 +36,7 @@ const popupMixins = {
         if (val.length) {
           let first = val[0];
           if (first.vueName === this.$options.name) {
-            this[first.toggleName] = true;
+            !this[first.toggleName] && (this[first.toggleName] = true);
           }
         }
       },

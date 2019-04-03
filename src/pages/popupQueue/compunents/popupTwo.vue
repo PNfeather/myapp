@@ -19,7 +19,7 @@
     created () {},
     mounted () {
       setTimeout(() => {
-        this.pushTestPagePopup({vueName: this.$options.name, toggleName: 'popupToggle2'});
+        this.commonPushPopupQueueArray('popupToggle2');
       }, 600);
     }
   };

@@ -1,37 +1,31 @@
 import {mapState, mapMutations} from 'vuex';
 import _ from '@/plugins/lodash';
 
-let popupConfig = {
-  'popup-one': 'popupToggle1',
-  'popup-two': 'popupToggle2',
-  'popup-three': ['popupToggle3', 'popupToggle4']
-};
-
 const popupMixins = {
   data () {
     return {
+      popupQueueToggleNameArray: []
     };
   },
   methods: {
-    ...mapMutations(['pushTestPagePopup', 'shiftTestPagePopup'])
+    ...mapMutations(['pushPagePopupQueueArray', 'shiftPagePopupQueueArray']),
+    commonPushPopupQueueArray (toggleName) {
+      this.pushPagePopupQueueArray({vueName: this.$options.name, toggleName: toggleName});
+      this.popupQueueToggleNameArray.push(toggleName);
+    }
   },
   computed: {
-    ...mapState(['testPagePopup']),
-    currentVueToggle () {
-      let currentToggle = popupConfig[this.$options.name];
-      if (typeof currentToggle === 'string') {
-        return this[popupConfig[this.$options.name]];
-      } else {
-        let obj = {};
-        currentToggle.forEach((item) => {
-          obj[item] = this[item];
-        });
-        return obj;
-      }
+    ...mapState(['pagePopupQueueArray']),
+    popupQueueToggleObject () {
+      let obj = {};
+      this.popupQueueToggleNameArray.forEach((item) => {
+        obj[item] = this[item];
+      });
+      return obj;
     }
   },
   watch: {
-    testPagePopup: {
+    pagePopupQueueArray: {
       handler (val) {
         if (val.length) {
           let first = val[0];
@@ -42,19 +36,13 @@ const popupMixins = {
       },
       deep: true
     },
-    currentVueToggle: {
+    popupQueueToggleObject: {
       handler (val, oldVal) {
-        if (typeof val === 'boolean') {
-          if (!val) {
-            this.shiftTestPagePopup();
+        _.forEach(val, (value, key) => {
+          if (!value && oldVal[key]) {
+            this.shiftPagePopupQueueArray();
           }
-        } else {
-          _.forEach(val, (value, key) => {
-            if (!value && oldVal[key]) {
-              this.shiftTestPagePopup();
-            }
-          });
-        }
+        });
       },
       deep: true
     }

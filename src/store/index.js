@@ -9,7 +9,7 @@ const store = new Vuex.Store({
     numB: 0,
     routerHistory: [], // 历史路由
     isFirstRouter: false, // 页面是否是第一次加载项目页面
-    testPagePopup: []
+    pagePopupQueueArray: []
   },
   getters: {
     sumState: (state) => (numC) => {
@@ -17,14 +17,14 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    pushTestPagePopup (state, value) {
-      state.testPagePopup.push(value);
+    pushPagePopupQueueArray (state, value) {
+      state.pagePopupQueueArray.push(value);
     },
-    shiftTestPagePopup (state) {
-      state.testPagePopup.shift();
+    shiftPagePopupQueueArray (state) {
+      state.pagePopupQueueArray.shift();
     },
-    clearTestPagePopup (state) {
-      state.testPagePopup = [];
+    clearPagePopupQueueArray (state) {
+      state.pagePopupQueueArray = [];
     },
     changeNum (state, payload = {numType: 'numA', value: 0}) {
       state[payload.numType] += payload.value;

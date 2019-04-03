@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex';
+  // import {mapMutations} from 'vuex';
   import popupOne from './compunents/popupOne';
   import popupTwo from './compunents/popupTwo';
   import popupThree from './compunents/popupThree';
@@ -20,7 +20,7 @@
       };
     },
     methods: {
-      ...mapMutations(['clearTestPagePopup'])
+      // ...mapMutations(['clearPagePopupQueueArray'])
     },
     components: {
       popupOne,
@@ -28,7 +28,7 @@
       popupThree
     },
     beforeRouteLeave (to, from, next) {
-      this.clearTestPagePopup();
+      // this.clearPagePopupQueueArray();
       next();
     },
     created () {

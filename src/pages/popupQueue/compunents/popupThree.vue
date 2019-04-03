@@ -25,8 +25,8 @@
     created () {},
     mounted () {
       setTimeout(() => {
-        this.pushTestPagePopup({vueName: this.$options.name, toggleName: 'popupToggle3'});
-        this.pushTestPagePopup({vueName: this.$options.name, toggleName: 'popupToggle4'});
+        this.commonPushPopupQueueArray('popupToggle3');
+        this.commonPushPopupQueueArray('popupToggle4');
       }, 100);
     }
   };

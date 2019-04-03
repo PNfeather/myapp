@@ -42,6 +42,10 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+router.afterEach((to, from) => {
+  if (store.state.pagePopupQueueArray.length) store.commit('clearPagePopupQueueArray');
+});
+
 let goPtimize = function (oldFn) { // 对router.go进行处理,对不同情况做不同的历史路由数据处理
   return function () {
     let routerHistory = store.state.routerHistory;

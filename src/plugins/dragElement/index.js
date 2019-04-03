@@ -29,8 +29,10 @@ Vue.directive('dragElement', { // 元素拖拽指令
       } else if (movePageY >= pageHeight - el.offsetHeight) {
         movePageY = pageHeight - el.offsetHeight;
       }
-      el.style.left = movePageX + 'px';
-      el.style.top = movePageY + 'px';
+      setTimeout(() => {
+        el.style.left = movePageX + 'px';
+        el.style.top = movePageY + 'px';
+      }, 10);
     });
     el.addEventListener('touchend', () => {
       endDragMove(el);

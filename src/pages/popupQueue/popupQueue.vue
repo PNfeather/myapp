@@ -12,8 +12,10 @@
   import popupOne from './compunents/popupOne';
   import popupTwo from './compunents/popupTwo';
   import popupThree from './compunents/popupThree';
+  import {queueWatchMixins} from './mixins/queueWatchMixins';
   export default {
     name: 'test-dom',
+    mixins: [queueWatchMixins],
     data () {
       return {
         title: '队列弹框'

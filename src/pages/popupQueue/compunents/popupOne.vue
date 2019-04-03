@@ -5,10 +5,10 @@
 </template>
 
 <script>
-  import {popupMixins} from '../mixins/popupMixins';
+  import {queuePushShiftMixins} from '../mixins/queuePushShiftMixins';
     export default {
       name: 'popup-one',
-      mixins: [popupMixins],
+      mixins: [queuePushShiftMixins],
       data () {
         return {
           popupToggle1: false

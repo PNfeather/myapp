@@ -1,8 +1,8 @@
-import {mapState, mapMutations} from 'vuex';
+import {mapMutations} from 'vuex';
 import _ from '@/plugins/lodash';
 import {needPopupQueuePage} from './needPopupQueuePage';
 
-const popupMixins = {
+const queuePushShiftMixins = {
   data () {
     return {
       isPopupQueuePage: needPopupQueuePage.includes(this.$route.path),
@@ -13,7 +13,9 @@ const popupMixins = {
     ...mapMutations(['pushPagePopupQueueArray', 'shiftPagePopupQueueArray']),
     commonPushPopupQueueArray (toggleName) {
       if (this.isPopupQueuePage) {
-        this.pushPagePopupQueueArray({vueName: this.$options.name, toggleName: toggleName});
+        this.pushPagePopupQueueArray(() => {
+          this[toggleName] = true;
+        });
         this.popupQueueToggleNameArray.push(toggleName);
       } else {
         this[toggleName] = true;
@@ -21,7 +23,6 @@ const popupMixins = {
     }
   },
   computed: {
-    ...mapState(['pagePopupQueueArray']),
     popupQueueToggleObject () {
       if (this.isPopupQueuePage) {
         let obj = {};
@@ -33,17 +34,6 @@ const popupMixins = {
     }
   },
   watch: {
-    pagePopupQueueArray: {
-      handler (val) {
-        if (this.isPopupQueuePage && val.length) {
-          let first = val[0];
-          if (first.vueName === this.$options.name) {
-            !this[first.toggleName] && (this[first.toggleName] = true);
-          }
-        }
-      },
-      deep: true
-    },
     popupQueueToggleObject: {
       handler (val, oldVal) {
         if (this.isPopupQueuePage) {
@@ -59,4 +49,4 @@ const popupMixins = {
   }
 };
 
-export {popupMixins};
+export {queuePushShiftMixins};

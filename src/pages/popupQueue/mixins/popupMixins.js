@@ -1,5 +1,6 @@
 import {mapState, mapMutations} from 'vuex';
 import _ from '@/plugins/lodash';
+import {needPopupQueuePage} from './needPopupQueuePage';
 
 const popupMixins = {
   data () {
@@ -10,8 +11,12 @@ const popupMixins = {
   methods: {
     ...mapMutations(['pushPagePopupQueueArray', 'shiftPagePopupQueueArray']),
     commonPushPopupQueueArray (toggleName) {
-      this.pushPagePopupQueueArray({vueName: this.$options.name, toggleName: toggleName});
-      this.popupQueueToggleNameArray.push(toggleName);
+      if (needPopupQueuePage.includes(this.$route.path)) {
+        this.pushPagePopupQueueArray({vueName: this.$options.name, toggleName: toggleName});
+        this.popupQueueToggleNameArray.push(toggleName);
+      } else {
+        this[toggleName] = true;
+      }
     }
   },
   computed: {

@@ -1,24 +1,13 @@
-import {mapState, mapMutations} from 'vuex';
-
 const queueWatchMixins = {
   data () {
     return {
+      popupQueueArray: []
     };
   },
-  computed: {
-    ...mapState(['pagePopupQueueArray'])
-  },
-  methods: {
-    ...mapMutations(['clearPagePopupQueueArray'])
-  },
-  beforeRouteLeave (to, from, next) {
-    this.clearPagePopupQueueArray();
-    next();
-  },
   watch: {
-    'pagePopupQueueArray.length' (val, oldVal) { // 队列长度监听，第一次增添队列或者队列长度减少时，执行队列列首方法
+    'popupQueueArray.length' (val, oldVal) { // 队列长度监听，第一次增添队列或者队列长度减少时，执行队列列首方法
        if (val && (!oldVal || (oldVal > val))) {
-         this.pagePopupQueueArray[0]();
+         this.popupQueueArray[0]();
        }
     }
   }

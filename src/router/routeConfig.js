@@ -1,6 +1,7 @@
 const config = [
 {path: '/inputUserName', name: 'inputUserName', meta: {}, component: () => import(/* webpackChunkName: "inputUserName")} */ '@/pages/inputUserName/inputUserName.vue')},
 {path: '/user', name: 'user', meta: {}, component: () => import(/* webpackChunkName: "user")} */ '@/pages/user/user.vue')},
+{path: '/createQr', name: 'createQr', meta: {}, component: () => import(/* webpackChunkName: "createQr")} */ '@/pages/createQr/createQr.vue')},
 {path: '/popupQueue', name: 'popupQueue', meta: {}, component: () => import(/* webpackChunkName: "popupQueue")} */ '@/pages/popupQueue/popupQueue.vue')},
 {path: '/exam', name: 'exam', meta: {}, component: () => import(/* webpackChunkName: "exam")} */ '@/pages/exam/exam.vue')},
 {path: '/uploadImgModel', name: 'uploadImgModel', meta: {}, component: () => import(/* webpackChunkName: "uploadImgModel")} */ '@/pages/uploadImgModel/uploadImgModel.vue')},

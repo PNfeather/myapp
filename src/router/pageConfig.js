@@ -3,6 +3,8 @@ const config = [
   {path: '/inputUserName', name: 'inputUserName', filePath: '/inputUserName'},
   // 我的
   {path: '/user', name: 'user', filePath: '/user'},
+  // 生成二维码
+  {path: '/createQr', name: 'createQr', filePath: '/createQr'},
   // 队列弹框示例
   {path: '/popupQueue', name: 'popupQueue', filePath: '/popupQueue'},
   // 模拟测试页

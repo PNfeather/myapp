@@ -23,5 +23,8 @@ export const indexJumpConfig = [
   }, {
     text: '点击进入队列弹框示例',
     path: 'popupQueue'
+  }, {
+    text: '点击进入二维码生成页',
+    path: 'createQr'
   }
 ];

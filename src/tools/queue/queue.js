@@ -3,7 +3,7 @@ function Queue () { // 队列
   // 列尾添加
   this.enqueue = function (element) {
     if (Array.isArray(element)) {
-      items.push([...element]);
+      items.push(...element);
     } else {
       items.push(element);
     }

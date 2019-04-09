@@ -1,16 +1,18 @@
 <template>
-    <app-page id="test-dom">
-      <app-header :title="title"></app-header>
+    <app-page id='test-dom'>
+      <app-header :title='title'></app-header>
     </app-page>
 </template>
 
 <script>
   import formatNum from './common/formatNum';
-    export default {
+  import {LinkedList} from '@/tools/linkedList/linkedList';
+  export default {
       name: 'test-dom',
       data () {
         return {
-          title: 'testDom'
+          title: 'testDom',
+          linkedList: new LinkedList()
         };
       },
       methods: {
@@ -63,10 +65,27 @@
         // this.test();
       },
       mounted () {
-        console.log(this.sort([1, 3, 2, 8, 9]));
+        // console.log(this.sort([1, 3, 2, 8, 9]));
         // this.test1();
         console.log(formatNum('12312312312'));
-        console.log(this.$route);
+        // console.log(this.$route);
+        let logThree = () => {
+          console.log(3);
+        };
+        this.linkedList.append(() => {
+          console.log(1);
+        });
+        this.linkedList.append(() => {
+          console.log(2);
+        });
+        this.linkedList.doLinkedList();
+        this.linkedList.insert(1, logThree);
+        this.linkedList.removeAt(2);
+        console.log(this.linkedList.indexOf(logThree));
+        console.log(this.linkedList.size());
+        console.log(this.linkedList.isEmpty());
+        // console.log(this.linkedList.getHead());
+        console.log(this.linkedList.toString());
       }
     };
 </script>

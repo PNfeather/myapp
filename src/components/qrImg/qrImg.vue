@@ -1,6 +1,6 @@
 <template>
   <section>
-    <vue-qr v-show="!withoutInternet" ref="qrImg" :logoSrc="imageUrl" :text="codeValue" :size="imgSize" :whiteMargin="false" :margin="0"></vue-qr>
+    <vue-qr v-show="!withoutInternet" :correctLevel="1" ref="qrImg" :dotScale="1" :logoSrc="imageUrl" :text="codeValue" :size="imgSize" :whiteMargin="false" :margin="0"></vue-qr>
     <img v-show="withoutInternet" :src="imageUrl" alt="" :style="{'height': imgSize + 'px', 'width': imgSize + 'px'}">
   </section>
 </template>

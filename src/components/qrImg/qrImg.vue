@@ -1,6 +1,6 @@
 <template>
   <section>
-    <vue-qr v-show="!withoutInternet" :correctLevel="1" ref="qrImg" :dotScale="1" :logoSrc="imageUrl" :text="codeValue" :size="imgSize" :whiteMargin="false" :margin="0"></vue-qr>
+    <vue-qr v-show="!withoutInternet" :correctLevel="1" :dotScale="1" :logoSrc="imageUrl" :colorLight="colorLight" :backgroundColor="backgroundColor" :colorDark="colorDark" :text="codeValue" :size="imgSize" :whiteMargin="false" :margin="0"></vue-qr>
     <img v-show="withoutInternet" :src="imageUrl" alt="" :style="{'height': imgSize + 'px', 'width': imgSize + 'px'}">
   </section>
 </template>
@@ -22,7 +22,10 @@
         imageUrl: defaultImage,
         codeValue: '',
         withoutInternet: true,
-        imgSize: 5
+        imgSize: 5,
+        backgroundColor: '#000',
+        colorDark: '#fff',
+        colorLight: '#000'
       };
     },
     mounted () {

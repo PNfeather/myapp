@@ -1,12 +1,14 @@
 <template>
     <app-page id='test-dom'>
       <app-header :title='title'></app-header>
+      <div></div>
     </app-page>
 </template>
 
 <script>
   import formatNum from './common/formatNum';
   import {LinkedList} from '@/tools/linkedList/linkedList';
+  import {ArrayList} from '@/tools/arraySort/arraySort';
   import {Queue} from '@/tools/queue/queue';
   export default {
       name: 'test-dom',
@@ -92,6 +94,27 @@
         },
         showFormatNum (val) {
           console.log(formatNum(val));
+        },
+        getArray () {
+          return this.$http.get('/arraySort').then((res) => {
+            let result = res.data;
+            if (result.resultCode === '000000') {
+              let data = result.resultData;
+              return Promise.resolve(data);
+            }
+          });
+        },
+        sortTest () {
+          this.getArray().then((res) => {
+            let arrayList = new ArrayList();
+            arrayList.insert(res);
+            console.log(arrayList.toString());
+            // arrayList.bubbleSort();
+            // arrayList.selectionSort();
+            // arrayList.insertionSort();
+            arrayList.mergeSort();
+            console.log(arrayList.toString());
+          });
         }
       },
       components: {
@@ -105,6 +128,7 @@
         // this.showFormatNum(1231231231);
         // this.showLinkedList();
         // this.showQueue();
+        this.sortTest();
       }
     };
 </script>

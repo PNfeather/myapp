@@ -73,6 +73,8 @@ if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', reSize, false);
 }
 
+Vue.prototype.$EVENTBUS = new Vue(); // 定义一个事件总线
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

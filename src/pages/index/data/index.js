@@ -26,5 +26,8 @@ export const indexJumpConfig = [
   }, {
     text: '点击进入二维码生成页',
     path: 'createQr'
+  }, {
+    text: '点击进入事件线使用',
+    path: 'eventExample'
   }
 ];

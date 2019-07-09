@@ -1,6 +1,8 @@
 const config = [
   // 用户名输入页
   {path: '/inputUserName', name: 'inputUserName', filePath: '/inputUserName'},
+  // 事件线
+  {path: '/eventExample', name: 'eventExample', filePath: '/eventExample'},
   // 我的
   {path: '/user', name: 'user', filePath: '/user'},
   // 生成二维码

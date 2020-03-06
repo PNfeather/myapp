@@ -1,29 +1,29 @@
 import {config} from './data';
 
-let pre = 'myApp_';
+let pre = 'myAppName_';
 
 function setItem (name, value) {
-  return window.localStorage.setItem(pre + name, value);
+  Object.getPrototypeOf(localStorage).setToggle = true;
+  return window.localStorage.setItem(pre + name, JSON.stringify(value));
 }
 
 function getItem (name) {
-  return window.localStorage.getItem(pre + name);
+  return JSON.parse(window.localStorage.getItem(pre + name));
 }
 
 let storageConfig = [...config];
 
-let storageStore = {
-  get: {},
-  set: {}
+let storage = {
+  get (name) {
+    if (storageConfig.includes(name)) {
+      return getItem(name);
+    }
+  },
+  set (name, value) {
+    if (storageConfig.includes(name)) {
+      return setItem(name, value);
+    }
+  }
 };
 
-storageConfig.map((item) => {
-  storageStore.get[item] = () => {
-    return getItem(item);
-  };
-  storageStore.set[item] = (val) => {
-    return setItem(item, val);
-  };
-});
-
-export default storageStore;
+export default storage;

@@ -34,7 +34,7 @@
   import appFooter from '@/components/footer/footer.vue';
   import {rightBtnConfig} from './rightBtnConfig';
   // import {mapState} from 'vuex';
-  import storageStore from '@/tools/localStorage';
+  import storage from '@/tools/localStorage';
   import _ from '@/plugins/lodash';
   import {indexJumpConfig} from './data';
   export default {
@@ -59,7 +59,7 @@
     watch: {},
     methods: {
       pageInit () {
-        this.userName = storageStore.get.userName();
+        this.userName = storage.get('userName');
         if (this.userName === 'yuyuyu') {
           this.justForMe = true;
         }
@@ -71,7 +71,7 @@
         this.$router.push(path);
       },
       loginOut () {
-        storageStore.set.userName('');
+        storage.set('userName', '');
         this.$router.push('inputUserName');
       }
     },

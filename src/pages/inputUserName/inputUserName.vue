@@ -19,7 +19,7 @@
 
 <script>
   import Validator from '@/pages/designMode/common/tacticsMode2';
-  import storageStore from '@/tools/localStorage';
+  import storage from '@/tools/localStorage';
     export default {
       name: 'input-user-name',
       data () {
@@ -57,7 +57,7 @@
         },
         submit () {
           if (this.validate()) {
-            storageStore.set.userName(this.userName);
+            storage.set('userName', this.userName);
             this.$router.go(-1);
           }
         }

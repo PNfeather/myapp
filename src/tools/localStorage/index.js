@@ -3,7 +3,7 @@ import {config} from './data';
 let pre = 'myAppName_';
 
 function setItem (name, value) {
-  Object.getPrototypeOf(localStorage).setToggle = true;
+  Object.getPrototypeOf(localStorage).__setToggle__ = true;
   return window.localStorage.setItem(pre + name, JSON.stringify(value));
 }
 

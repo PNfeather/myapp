@@ -37,6 +37,7 @@
   import storage from '@/tools/localStorage';
   import _ from '@/plugins/lodash';
   import {indexJumpConfig} from './data';
+  import {getJSON} from '@/tools/common';
   export default {
     name: 'firstPage',
     data () {
@@ -63,6 +64,11 @@
         if (this.userName === 'yuyuyu') {
           this.justForMe = true;
         }
+        getJSON('/static/json/test.json').then(res => {
+          console.log(res);
+        }).catch((err) => {
+          console.log(err);
+        });
       },
       openJumpPopup () {
         this.showJumpPopup = !this.showJumpPopup;

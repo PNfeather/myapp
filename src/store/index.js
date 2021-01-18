@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
+import storage from '@/tools/localStorage';
 
 Vue.use(Vuex);
 
@@ -29,7 +31,8 @@ const store = new Vuex.Store({
       state.routerHistory.shift();
     },
     sliceRouterHistory (state, value) {
-      state.routerHistory = state.routerHistory.slice(0, value);
+      const result = state.routerHistory.slice(0, value);
+      state.routerHistory = result;
     },
     changeIsFirstRouter (state, val) {
       state.isFirstRouter = val;
@@ -56,7 +59,22 @@ const store = new Vuex.Store({
     doChangeIsFirstRouter ({commit}, value) {
       commit('changeIsFirstRouter', value);
     }
-  }
+  },
+  plugins: [
+    // store数据持久化
+    createPersistedState({
+      storage: {
+        getItem: (key) => storage.get(key),
+        setItem: (key, value) => storage.set(key, value),
+        removeItem: (key) => storage.remove(key)
+      },
+      reducer (state) {
+        return {
+          routerHistory: state.routerHistory
+        };
+      }
+    })
+  ]
 });
 
 Vue.$store = store;

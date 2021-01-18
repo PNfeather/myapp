@@ -1,28 +1,41 @@
+/**
+ * window.sessionStorage再封装
+ * 需要在./config中注册后的字段才可以运行window.sessionStorage
+ */
 import {config} from './data';
 
-let pre = 'myAppName_';
+const pre = 'myApp_';
 
-function setItem (name, value) {
-  Object.getPrototypeOf(localStorage).__setToggle__ = true;
-  return window.localStorage.setItem(pre + name, JSON.stringify(value));
-}
+const setItem = (name, value) => {
+  return window.sessionStorage.setItem(pre + name, JSON.stringify(value));
+};
 
-function getItem (name) {
-  return JSON.parse(window.localStorage.getItem(pre + name));
-}
+const getItem = (name) => {
+  return JSON.parse(window.sessionStorage.getItem(pre + name));
+};
 
-let storageConfig = [...config];
+const removeItem = (name) => {
+  return window.sessionStorage.removeItem(pre + name);
+};
 
-let storage = {
+const storageFun = (method, ...args) => {
+  const [name] = args;
+  if (config.includes(name)) {
+    return method(...args);
+  } else {
+    console.warn('当前字面量' + name + '未设置缓存，请在storage工具data中配置');
+  }
+};
+
+const storage = {
   get (name) {
-    if (storageConfig.includes(name)) {
-      return getItem(name);
-    }
+    return storageFun(getItem, name);
   },
   set (name, value) {
-    if (storageConfig.includes(name)) {
-      return setItem(name, value);
-    }
+    return storageFun(setItem, name, value);
+  },
+  remove (name) {
+    return storageFun(removeItem, name);
   }
 };
 

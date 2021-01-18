@@ -17,5 +17,9 @@ const config = [
 {path: '/BscrollTabsTestPage', name: 'BscrollTabsTestPage', meta: {}, component: () => import(/* webpackChunkName: "BscrollTabsTestPage")} */ '@/pages/BscrollTabsTestPage/BscrollTabsTestPage.vue')},
 {path: '/designMode', name: 'designMode', meta: {}, component: () => import(/* webpackChunkName: "designMode")} */ '@/pages/designMode/designMode.vue')},
 {path: '/testDom', name: 'testDom', meta: {}, component: () => import(/* webpackChunkName: "testDom")} */ '@/pages/testDom/testDom.vue')},
+{path: '/routerTest1', name: 'routerTest1', meta: {}, component: () => import(/* webpackChunkName: "routerTest1")} */ '@/pages/routerTest/routerTest1.vue')},
+{path: '/routerTest2', name: 'routerTest2', meta: {}, component: () => import(/* webpackChunkName: "routerTest2")} */ '@/pages/routerTest/routerTest2.vue')},
+{path: '/routerTest3', name: 'routerTest3', meta: {}, component: () => import(/* webpackChunkName: "routerTest3")} */ '@/pages/routerTest/routerTest3.vue')},
+{path: '/routerTest4', name: 'routerTest4', meta: {}, component: () => import(/* webpackChunkName: "routerTest4")} */ '@/pages/routerTest/routerTest4.vue')},
 {path: '/unfind', name: 'unfind', meta: {}, component: () => import(/* webpackChunkName: "unfind")} */ '@/pages/unfind/unfind.vue')}];
 export default config;

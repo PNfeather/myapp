@@ -24,7 +24,8 @@
     "vue": "^2.5.2",
     "vue-qr": "^2.0.6",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

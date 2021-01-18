@@ -35,6 +35,11 @@ const config = [
   {path: '/designMode', name: 'designMode', filePath: '/designMode'},
   // dom测试页
   {path: '/testDom', name: 'testDom', filePath: '/testDom'},
+  // 路由测试页
+  {path: '/routerTest1', name: 'routerTest1', filePath: '/routerTest'},
+  {path: '/routerTest2', name: 'routerTest2', filePath: '/routerTest'},
+  {path: '/routerTest3', name: 'routerTest3', filePath: '/routerTest'},
+  {path: '/routerTest4', name: 'routerTest4', filePath: '/routerTest'},
   // 丢失页
   {path: '/unfind', name: 'unfind', filePath: '/unfind'}
 ];

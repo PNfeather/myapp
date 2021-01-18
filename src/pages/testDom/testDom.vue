@@ -281,51 +281,51 @@
         // let string = 'laadkjfdddddddkkkkkkkdddddddaaaaaaaaaaaa';
         // console.log(findLongest(string));
 
-        let string = 'a1<b1<c1, c2<d1, d2>>, b2<c3>>';
-        let dealString = (string) => {
-          let stringCatch = {
-            type: ''
-          };
-          let childString = '';
-          let floor = 0;
-          for (let i of string.replace(/\s+/g, '')) {
-            switch (i) {
-              case '<':
-                floor++;
-                if (floor === 1) {
-                  stringCatch.typeArgs = [];
-                } else {
-                  childString += i;
-                }
-                break;
-              case ',':
-                if (floor === 1) {
-                  stringCatch.typeArgs && stringCatch.typeArgs.push(dealString(childString));
-                  childString = '';
-                } else {
-                  childString += i;
-                }
-                break;
-              case '>':
-                floor--;
-                if (floor) {
-                  childString += i;
-                } else {
-                  stringCatch.typeArgs && stringCatch.typeArgs.push(dealString(childString));
-                }
-                break;
-              default:
-                if (floor) {
-                  childString += i;
-                } else {
-                  stringCatch.type += i;
-                }
-                break;
-            }
-          }
-          return stringCatch;
-        };
-        console.log(dealString(string));
+        // let string = 'a1<b1<c1, c2<d1, d2>>, b2<c3>>';
+        // let dealString = (string) => {
+        //   let stringCatch = {
+        //     type: ''
+        //   };
+        //   let childString = '';
+        //   let floor = 0;
+        //   for (let i of string.replace(/\s+/g, '')) {
+        //     switch (i) {
+        //       case '<':
+        //         floor++;
+        //         if (floor === 1) {
+        //           stringCatch.typeArgs = [];
+        //         } else {
+        //           childString += i;
+        //         }
+        //         break;
+        //       case ',':
+        //         if (floor === 1) {
+        //           stringCatch.typeArgs && stringCatch.typeArgs.push(dealString(childString));
+        //           childString = '';
+        //         } else {
+        //           childString += i;
+        //         }
+        //         break;
+        //       case '>':
+        //         floor--;
+        //         if (floor) {
+        //           childString += i;
+        //         } else {
+        //           stringCatch.typeArgs && stringCatch.typeArgs.push(dealString(childString));
+        //         }
+        //         break;
+        //       default:
+        //         if (floor) {
+        //           childString += i;
+        //         } else {
+        //           stringCatch.type += i;
+        //         }
+        //         break;
+        //     }
+        //   }
+        //   return stringCatch;
+        // };
+        // console.log(dealString(string));
         // let getTotal = (time) => {
         //   let count = 1;
         //   for (let i = 1; i <= time; i++) {
@@ -342,6 +342,54 @@
         // this.showLinkedList();
         // this.showQueue();
         // this.sortTest();
+
+        // function myReplace (str, before, after) {
+        //   let copyStr = str;
+        //   let copyAf = after;
+        //   if (/[A-Z]/.test(before[0])) {
+        //     copyAf = copyAf[0].toUpperCase() + copyAf.substr(1, copyAf.length);
+        //   }
+        //   while (copyStr.indexOf(before) > -1) {
+        //     copyStr = copyStr.replace(before, copyAf);
+        //   }
+        //   return copyStr;
+        // }
+        //
+        // console.log(myReplace('A quick brown fox jumped over the lazy dog', 'jumped', 'leaped'));
+
+        function insert (strArr, v) {
+          let len = strArr.length;
+          let result = [];
+          for (let i = 0; i < len; i++) {
+            let str = strArr[i];
+            let strLen = str.length;
+            for (let j = 0; j < strLen + 1; j++) {
+              let start = str.substring(0, j);
+              let end = str.substring(j, strLen);
+              let newStr = start + v + end;
+              result.push(newStr);
+            }
+          }
+          return result;
+        }
+
+        function permAlone (str) {
+          let len = str.length;
+          if (len === 1) {
+            return 1;
+          }
+          let strArr = [str[0]];
+          for (let i = 1; i < len; i++) {
+            strArr = insert(strArr, str[i]);
+          }
+          strArr = strArr.filter(item => {
+            let reg = /([a-zA-Z])\1+/;
+            return !reg.test(item);
+          });
+          return strArr;
+        }
+
+        console.log(permAlone('aab'));
       }
     };
 </script>

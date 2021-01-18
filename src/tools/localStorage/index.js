@@ -1,41 +1,35 @@
 /**
- * window.sessionStorage再封装
- * 需要在./config中注册后的字段才可以运行window.sessionStorage
+ * storage再封装
+ * 需要注册后的字段才可以运行存储
  */
 import {config} from './data';
 
 const pre = 'myApp_';
 
-const setItem = (name, value) => {
-  return window.sessionStorage.setItem(pre + name, JSON.stringify(value));
-};
+// 存储方式 'localStorage' | 'sessionStorage'
+const storageType = 'sessionStorage';
 
-const getItem = (name) => {
-  return JSON.parse(window.sessionStorage.getItem(pre + name));
+const setOptimize = (setItem) => {
+  return function (...args) {
+    const [key] = args;
+    if (!config.includes(key.substr(pre.length))) {
+      console.warn('当前字面量' + key + '未配置缓存，请在/src/tools/localStorage/data中注入属性');
+    } else {
+      return setItem.apply(window[storageType], arguments);
+    }
+  };
 };
-
-const removeItem = (name) => {
-  return window.sessionStorage.removeItem(pre + name);
-};
-
-const storageFun = (method, ...args) => {
-  const [name] = args;
-  if (config.includes(name)) {
-    return method(...args);
-  } else {
-    console.warn('当前字面量' + name + '未设置缓存，请在storage工具data中配置');
-  }
-};
+Object.getPrototypeOf(localStorage).setItem = setOptimize(Object.getPrototypeOf(localStorage).setItem);
 
 const storage = {
-  get (name) {
-    return storageFun(getItem, name);
+  get (key) {
+    return JSON.parse(window[storageType].getItem(pre + key));
   },
-  set (name, value) {
-    return storageFun(setItem, name, value);
+  set (key, value) {
+    return window[storageType].setItem(pre + key, JSON.stringify(value));
   },
-  remove (name) {
-    return storageFun(removeItem, name);
+  remove (key) {
+    return window[storageType].removeItem(pre + key);
   }
 };
 

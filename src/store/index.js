@@ -9,7 +9,8 @@ const store = new Vuex.Store({
   state: {
     numA: 0,
     numB: 0,
-    routerHistory: [], // 历史路由
+    // 历史路由栈
+    routerHistory: [],
     isFirstRouter: false // 页面是否是第一次加载项目页面
   },
   getters: {
@@ -31,6 +32,7 @@ const store = new Vuex.Store({
       state.routerHistory.shift();
     },
     sliceRouterHistory (state, value) {
+      // 需要中转，不能直接赋值，vue内部数据处理的问题
       const result = state.routerHistory.slice(0, value);
       state.routerHistory = result;
     },
@@ -43,21 +45,6 @@ const store = new Vuex.Store({
       setTimeout(() => {
         commit('changeNum', payload);
       }, 500);
-    },
-    doPushRouterHistory ({commit}, value) {
-      commit('pushRouterHistory', value);
-    },
-    doPopRouterHistory ({commit}) {
-      commit('popRouterHistory');
-    },
-    doShiftRouterHistory ({commit}) {
-      commit('shiftRouterHistory');
-    },
-    doSliceRouterHistory ({commit}, value) {
-      commit('sliceRouterHistory', value);
-    },
-    doChangeIsFirstRouter ({commit}, value) {
-      commit('changeIsFirstRouter', value);
     }
   },
   plugins: [

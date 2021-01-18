@@ -23,19 +23,19 @@ router.beforeEach((to, from, next) => {
   const routerHistory = store.state.routerHistory;
   const isFirstRouter = store.state.isFirstRouter;
   const routerHistoryLen = routerHistory.length;
-  if (!routerHistoryLen && !isFirstRouter) store.dispatch('doChangeIsFirstRouter', true);
-  if (routerHistoryLen && isFirstRouter) store.dispatch('doChangeIsFirstRouter', false);
+  if (!routerHistoryLen && !isFirstRouter) store.commit('changeIsFirstRouter', true);
+  if (routerHistoryLen && isFirstRouter) store.commit('changeIsFirstRouter', false);
   if (routerHistoryLen && routerHistory[routerHistoryLen - 1] === to.name) {
     next();
     return;
   }
   if (routerHistoryLen >= 2 && routerHistory[routerHistoryLen - 2] === to.name) {
-    store.dispatch('doPopRouterHistory');
+    store.commit('popRouterHistory');
   } else if (routerHistoryLen >= 50) {
-    store.dispatch('doShiftRouterHistory');
-    store.dispatch('doPushRouterHistory', to.name);
+    store.commit('shiftRouterHistory');
+    store.commit('pushRouterHistory', to.name);
   } else {
-    store.dispatch('doPushRouterHistory', to.name);
+    store.commit('pushRouterHistory', to.name);
   }
   if (to.meta.needLogin) {
     let userName = storage.get('userName');
@@ -55,14 +55,14 @@ const goOptimize = (go) => {
     if (param && (typeof param === 'string')) {
       let currentRouterIndex = routerHistory.lastIndexOf(param);
       if (currentRouterIndex > -1) {
-        store.dispatch('doSliceRouterHistory', currentRouterIndex + 1);
+        store.commit('sliceRouterHistory', currentRouterIndex + 1);
         args[0] = -(routerHistoryLen - currentRouterIndex - 1);
       } else {
         console.warn('历史路径找不到' + param);
         return false;
       }
     } else if (param && (typeof param === 'number') && param < -1) {
-      store.dispatch('doSliceRouterHistory', routerHistoryLen + param);
+      store.commit('sliceRouterHistory', routerHistoryLen + param);
     }
     return go.apply(router, args);
   };

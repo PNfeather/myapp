@@ -20,6 +20,7 @@ let router = new Router({
 
 router.beforeEach((to, from, next) => {
   // 根据路由进入页面对历史路由存储进行不同处理
+  console.log(router, history);
   const routerHistory = store.state.routerHistory;
   const isFirstRouter = store.state.isFirstRouter;
   const routerHistoryLen = routerHistory.length;
@@ -47,8 +48,9 @@ router.beforeEach((to, from, next) => {
 });
 
 // 对router.go进行处理,对不同情况做不同的历史路由数据处理
-const goOptimize = (go) => {
-  return (...args) => {
+// 方案不可取，未考虑router.replace情况
+const goOptimize = function (go) {
+  return function (...args) {
     const routerHistory = store.state.routerHistory;
     const routerHistoryLen = routerHistory.length;
     const param = args[0];
@@ -64,7 +66,7 @@ const goOptimize = (go) => {
     } else if (param && (typeof param === 'number') && param < -1) {
       store.commit('sliceRouterHistory', routerHistoryLen + param);
     }
-    return go.apply(router, args);
+    return go.apply(this, args);
   };
 };
 

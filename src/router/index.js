@@ -19,8 +19,8 @@ let router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  console.log(to);
   // 根据路由进入页面对历史路由存储进行不同处理
-  console.log(router, history);
   const routerHistory = store.state.routerHistory;
   const isFirstRouter = store.state.isFirstRouter;
   const routerHistoryLen = routerHistory.length;
@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
 });
 
 // 对router.go进行处理,对不同情况做不同的历史路由数据处理
-// 方案不可取，未考虑router.replace情况
+// 方案不可取，还需要考虑replace、go往前几页、push往返等情况
 const goOptimize = function (go) {
   return function (...args) {
     const routerHistory = store.state.routerHistory;

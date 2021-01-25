@@ -34,6 +34,8 @@ module.exports = {
     // 语句已分号结尾
     'semi': ['error', 'always'],
     // 缩进风格
-    "indent": 0
+    "indent": 0,
+    // 函数前空格
+    'space-before-function-paren': 'off'
   }
 }

@@ -19,7 +19,6 @@ let router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(to);
   // 根据路由进入页面对历史路由存储进行不同处理
   const routerHistory = store.state.routerHistory;
   const isFirstRouter = store.state.isFirstRouter;

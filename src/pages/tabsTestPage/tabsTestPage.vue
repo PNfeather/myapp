@@ -53,9 +53,9 @@
       changeHeight () {
         this.$refs.content1.style.height = 300 + 'px';
       },
-      goTop () {
-        let targetEl = arguments[0];
-        let scrollEl = arguments[1];
+      goTop (...args) {
+        let targetEl = args[0];
+        let scrollEl = args[1];
         setTimeout(() => {
           scrollTo(scrollEl, targetEl.offsetTop);
         }, 3000);

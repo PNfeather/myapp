@@ -40,6 +40,8 @@ const config = [
   {path: '/routerTest2', name: 'routerTest2', filePath: '/routerTest'},
   {path: '/routerTest3', name: 'routerTest3', filePath: '/routerTest'},
   {path: '/routerTest4', name: 'routerTest4', filePath: '/routerTest'},
+  // v-for key测试
+  {path: '/keyTest', name: 'keyTest', filePath: '/keyTest'},
   // 丢失页
   {path: '/unfind', name: 'unfind', filePath: '/unfind'}
 ];

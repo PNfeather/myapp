@@ -21,5 +21,6 @@ const config = [
 {path: '/routerTest2', name: 'routerTest2', meta: {}, component: () => import(/* webpackChunkName: "routerTest2")} */ '@/pages/routerTest/routerTest2.vue')},
 {path: '/routerTest3', name: 'routerTest3', meta: {}, component: () => import(/* webpackChunkName: "routerTest3")} */ '@/pages/routerTest/routerTest3.vue')},
 {path: '/routerTest4', name: 'routerTest4', meta: {}, component: () => import(/* webpackChunkName: "routerTest4")} */ '@/pages/routerTest/routerTest4.vue')},
+{path: '/keyTest', name: 'keyTest', meta: {}, component: () => import(/* webpackChunkName: "keyTest")} */ '@/pages/keyTest/keyTest.vue')},
 {path: '/unfind', name: 'unfind', meta: {}, component: () => import(/* webpackChunkName: "unfind")} */ '@/pages/unfind/unfind.vue')}];
 export default config;

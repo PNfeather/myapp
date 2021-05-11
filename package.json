@@ -19,7 +19,7 @@
     "better-scroll": "^1.13.2",
     "echarts": "^4.1.0",
     "fastclick": "^1.0.6",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
     "vue-qr": "^2.0.6",
